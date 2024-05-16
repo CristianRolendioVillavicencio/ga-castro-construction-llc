@@ -1,0 +1,58 @@
+:root {
+    --color1-bg: #ff9500;
+    --color1-bg1: #ff950062;
+    --color1-txt: #000000;
+    --color1-txt1: #ffffff;
+
+    --color2-bg: #141422;
+    --color2-bg1: #14142257;
+    --color2-txt: #ffffff;
+    --color2-txt1: #ffa830;
+
+    --color3-bg: #ffffff;
+    --color3-txt: #000000;
+    --color3-txt1: #ffa830;
+
+    --color4-bg: #f9f9f9;
+    --color4-txt: #cccccc;
+
+    --color4-bg: #13120d;
+    --color4-txt: #ffffff;
+    --color4-txt2: #ff9500;
+}
+
+.--color1-bg {
+    background-color: var(--color1-bg);
+}
+
+.--color1-txt {
+    color: var(--color1-txt);
+}
+
+.--color1-txt1 {
+    color: var(--color1-txt1);
+}
+
+.--color2-bg {
+    background-color: var(--color2-bg);
+}
+
+.--color2-txt {
+    color: var(--color2-txt);
+}
+
+.--color2-txt1 {
+    color: var(--color2-txt1);
+}
+
+.--color3-bg {
+    background-color: var(--color3-bg);
+}
+
+.--color3-txt {
+    color: var(--color3-txt);
+}
+
+.--color3-txt1 {
+    color: var(--color3-txt1);
+}
