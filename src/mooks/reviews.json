@@ -4,7 +4,7 @@
         "name": "Meghan Witte",
         "photo": "/profile/1.png",
         "date": "2024-01-26",
-        "stars": 3,
+        "stars": 5,
         "description": "I had a roof leak for a while. After dealing with multiple roof companies it was a challenge to get them to do the job. I contacted Jeison and he was able to squeeze me in to get the roof replaced. His guys were extremely thorough replacing the wood roof along with the copper flashing. They took their time and did it the right way. I then hired them to install an interior French door and again squeezed me in the get it done. I would definitely recommend GA Castro for home improvements. Thank you Jeison.",
         "url": "https://www.google.com/maps/contrib/101543468750429652870/reviews"
     },
@@ -73,11 +73,11 @@
     },
     {
         "id": 9,
-        "name": "Cristian Villavicencio",
+        "name": "Juan Aristizabal",
         "photo": "/profile/9.png",
         "date": "2023-06-23",
         "stars": 5,
-        "description": "I have had the pleasure of working with G.A. Castro Construction LLC and I am pleased to say that they are a team of experts in their field. From the get-go, I felt confident that they were committed to my project and worked diligently to bring my vision to life. The G.A team Castro Construction LLC is very professional, courteous, and was always available to answer any questions I had. Highly recommending G.A. Castro Construction LLC for any construction project you have in mind.",
+        "description": "Excellent work, and was best they took care of everything including dealing with insurance i will recommend them to any one that needs the roof replaced",
         "url": "https://www.google.com/maps/contrib/100707924317045576284/reviews"
     },
     {
@@ -126,11 +126,38 @@
     },
     {
         "id": 15,
-        "name": "Diana Castro",
-        "photo": "/profile/15.png",
-        "date": "2022-11-09",
+        "name": "Jacqueline R Bhavaraju",
+        "photo": "/profile/15.jpeg",
+        "date": "2023-11-09",
         "stars": 5,
-        "description": "Very Professional people I can highly recommend G.A Construcción LLC.",
+        "description": "Jeison and his team at GA Castro Construction are honest, reliable, and deliver quality efficient construction work. They have done my roof, interior damage repairs, skylights. Wonderful company and very trustworthy and fair in cost. Highly recommend them!",
+        "url": "https://www.google.com/maps/contrib/110305611170325627345/reviews"
+    },
+    {
+        "id": 16,
+        "name": "Michael Cassella",
+        "photo": "/profile/16.jpg",
+        "date": "2023-12-09",
+        "stars": 5,
+        "description": "I have dealt with Jeison and his father for last fifteen years; mostly repairing my slate roof. Most recently, had Jeison and the crew paint my 5,000 square foor, french provencial, stucco house. They did a phenomenal job from meticulous prep to final paint job. They were dillegent, reliable, dependable, pleasent and cooperative at every step of the five week project. Can't recommend them more highly. Hire them. You won't regret it and they will become your go to contractor for may things.",
+        "url": "https://www.google.com/maps/contrib/110305611170325627345/reviews"
+    },
+    {
+        "id": 17,
+        "name": "Lissi Alveno",
+        "photo": "/profile/17.png",
+        "date": "2024-05-09",
+        "stars": 5,
+        "description": "Recomendable 💯 very professional and hard working. They would do anything to help you out. We just got out roof redone and we are so happy with the results.",
+        "url": "https://www.google.com/maps/contrib/110305611170325627345/reviews"
+    },
+    {
+        "id": 18,
+        "name": "Sarah",
+        "photo": "/profile/18.png",
+        "date": "2024-04-09",
+        "stars": 5,
+        "description": "I had the pleasure of working with the Ga Castro construction team for a roof and siding job, and I couldn't be happier with the outcome. From start to finish, they were incredibly professional and attentive to every detail. One of the things that really stood out to me was their expertise in handling insurance claims. They took the time to thoroughly explain the process and worked diligently to ensure that everything was taken care of smoothly. When it came to the actual work, their team demonstrated exceptional skill and efficiency. They completed the project in a timely manner without sacrificing quality, and the results were truly impressive. The attention to detail was evident in every aspect of their work, from the precision of the installation to the finishing touches. Overall, I couldn't have asked for a better experience. Ga Castro construction exceeded my expectations in every way, and I wouldn't hesitate to recommend them to anyone in need of their services. I'm grateful for their professionalism, expertise, and commitment to delivering top-notch results. They've earned my trust and I will definitely be reaching out to them for any future projects.",
         "url": "https://www.google.com/maps/contrib/110305611170325627345/reviews"
     }
 ]

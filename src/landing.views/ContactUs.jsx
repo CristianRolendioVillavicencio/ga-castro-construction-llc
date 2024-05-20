@@ -34,8 +34,7 @@ export default function ContactUs() {
                 <div className="container px-[var(--padding)]">
                     <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-20 -translate-y-16 sm:-translate-y-24">
                         <p className="font-title text-4xl text-center lg:text-end lg:pt-28">
-                            Bridgeport, Stamford, Norwalk, Danbury, or any other City in Fairfield
-                            County
+                        We are your trusted local company for roofing, siding, and gutters in New Haven and Fairfield County.
                         </p>
                         <div className="w-full max-w-60 sm:max-w-80">
                             <img
