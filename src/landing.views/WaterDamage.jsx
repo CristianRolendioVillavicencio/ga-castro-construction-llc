@@ -11,12 +11,14 @@ export default function WaterDamage({ setIsVisibleModalFormConsult }) {
         <AnimatedElement>
             <section className="relative overflow-hidden p-[--padding] ">
                 <div className="absolute inset-0 w-full h-full ">
-                    <img src="/img/4.png" className="w-full h-full object-cover" />
+                    <img src="/img/4.jpg" className="w-full h-full object-cover" />
                 </div>
                 <div className="relative z-10 flex flex-col pb-64 gap-5 pt-48 container text-[--color1-txt2] items-center">
-                    <h3 className="font-title text-4xl sm:text-6xl text-center">Water Damage</h3>
                     <h3 className="font-title text-4xl sm:text-6xl text-center">
-                        Restoration Services
+                        Expert 24/7 Water Damage Restoration Services
+                    </h3>
+                    <h3 className="font-title text-4xl sm:text-6xl text-center">
+                        in Fairfield and New Haven County, CT and Surrounding Areas
                     </h3>
                 </div>
             </section>
