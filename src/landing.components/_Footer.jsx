@@ -62,22 +62,22 @@ export default function Footer({ withOutMarginTop = [] }) {
                             <h3 className="text-xl font-title2 --color2-txt1">Services</h3>
                             <div className="flex flex-col gap-1 text-sm opacity-75 --color2-txt">
                                 <Link className="hover:underline" to="/services/insurance-claims">
-                                    Reclamos de Seguro
+                                    Insurance Claims
                                 </Link>
                                 <Link className="hover:underline" to="/services/roofing">
                                     Techumbre
                                 </Link>
                                 <Link className="hover:underline" to="/services/siding">
-                                    Vía Muerta
+                                    Siding
                                 </Link>
                                 <Link className="hover:underline" to="/services/gutter">
-                                    Canal
+                                    Gutter
                                 </Link>
                                 <Link className="hover:underline" to="/services/carpentry">
-                                    Carpintería
+                                    Carpentry
                                 </Link>
                                 <Link className="hover:underline" to="/services/paint">
-                                    Pintar
+                                    Painting
                                 </Link>
                             </div>
                         </div>
@@ -85,22 +85,22 @@ export default function Footer({ withOutMarginTop = [] }) {
                             <h3 className="text-xl font-title2 --color2-txt1">Services</h3>
                             <div className="flex flex-col gap-1 text-sm  opacity-75 --color2-txt">
                                 <Link className="hover:underline" to="/">
-                                    Reclamos de Seguro
+                                    Insurance Claims
                                 </Link>
                                 <Link className="hover:underline" to="/">
-                                    Techumbre
+                                    Roofing
                                 </Link>
                                 <Link className="hover:underline" to="/">
-                                    Vía Muerta
+                                    Siding
                                 </Link>
                                 <Link className="hover:underline" to="/">
-                                    Canal
+                                    Gutter
                                 </Link>
                                 <Link className="hover:underline" to="/">
-                                    Carpintería
+                                    Carpentry
                                 </Link>
                                 <Link className="hover:underline" to="/">
-                                    Pintar
+                                    Painting
                                 </Link>
                             </div>
                         </div>
