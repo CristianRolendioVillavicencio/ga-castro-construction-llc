@@ -7,17 +7,109 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import GoogleItems from "../landing.components/GoogleItems";
 
 export default function ServiceGutter() {
+    const fairfieldCountyCities = [
+        "Bridgeport",
+        "Stamford",
+        "Norwalk",
+        "Danbury",
+        "Fairfield",
+        "Greenwich",
+        "Westport",
+        "Shelton",
+        "Trumbull",
+        "Stratford",
+        "Ridgefield",
+        "Bethel",
+        "Brookfield",
+        "Darien",
+        "Easton",
+        "Monroe",
+        "New Canaan",
+        "New Fairfield",
+        "Newtown",
+        "Redding",
+        "Weston",
+        "Wilton",
+    ];
+
+    const newHavenCountyCities = [
+        "New Haven",
+        "Waterbury",
+        "Meriden",
+        "Milford",
+        "West Haven",
+        "East Haven",
+        "Wallingford",
+        "Hamden",
+        "Cheshire",
+        "Branford",
+        "Derby",
+        "Guilford",
+        "Madison",
+        "Middlebury",
+        "Naugatuck",
+        "North Branford",
+        "North Haven",
+        "Orange",
+        "Oxford",
+        "Prospect",
+        "Seymour",
+        "Southbury",
+        "Wolcott",
+        "Woodbridge",
+    ];
+
+    const services = [
+        "Gutter Cleaning",
+        "Gutter Repair",
+        "Gutter Installation",
+        "Gutter Maintenance",
+        "Gutter Replacement",
+        "Gutter Guards Installation",
+        "Seamless Gutters Installation",
+        "Rain Gutters Installation",
+        "Downspout Repair",
+        "Leaf Guards Installation",
+        "Residential Gutter Services",
+        "Commercial Gutter Services",
+        "Gutter Inspection",
+        "Custom Gutter Solutions",
+        "Emergency Gutter Repair",
+        "Seasonal Gutter Cleaning",
+        "Gutter Protection Systems",
+        "Gutter Renovation",
+        "Gutter Alignment",
+        "Gutter Painting",
+    ];
+
     return (
         <AnimatedElement>
             <section>
                 <div className="container">
                     <BannerItem
-                        title="Redirects"
-                        title2="Excess Rain"
-                        subtitle="Conduct rainwater with the best materials"
+                        title="Top-Rated Gutter Cleaning"
+                        title2="Repair, and Installation"
+                        subtitle=" in Fairfield and New Haven Counties"
                         imgSrc="/image/gutter-1.jpg"
-                        imgText="Maintenance of gutters in a home"
+                        imgText="GUTTER CLEANING, INSTALLATION & REPAIR"
                     />
+                    {/* SEO hidden text */}
+                    <div style={{ display: "none" }}>
+                        {[...fairfieldCountyCities, ...newHavenCountyCities].map((city) =>
+                            services.map((service) => (
+                                <div key={`${city}-${service}`}>
+                                    {/* Palabras clave con "CT" */}
+                                    <p>
+                                        {service} in {city}, CT.
+                                    </p>
+                                    {/* Palabras clave sin "CT" */}
+                                    <p>
+                                        {service} in {city}.
+                                    </p>
+                                </div>
+                            ))
+                        )}
+                    </div>
                 </div>
             </section>
             <section className="relative bg-[#0b0c1e]">
@@ -75,5 +167,4 @@ export default function ServiceGutter() {
             </section>
         </AnimatedElement>
     );
-    // return <textarea placeholder={placeholder} className={classNameInput} />;
 }

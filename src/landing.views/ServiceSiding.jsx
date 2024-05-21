@@ -7,57 +7,140 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GoogleItems from "../landing.components/GoogleItems";
 
 export default function ServiceSiding() {
+    const fairfieldCountyCities = [
+        'Bridgeport',
+        'Stamford',
+        'Norwalk',
+        'Danbury',
+        'Fairfield',
+        'Greenwich',
+        'Westport',
+        'Shelton',
+        'Trumbull',
+        'Stratford',
+        'Ridgefield',
+        'Bethel',
+        'Brookfield',
+        'Darien',
+        'Easton',
+        'Monroe',
+        'New Canaan',
+        'New Fairfield',
+        'Newtown',
+        'Redding',
+        'Weston',
+        'Wilton'
+    ];
+
+    const newHavenCountyCities = [
+        'New Haven',
+        'Waterbury',
+        'Meriden',
+        'Milford',
+        'West Haven',
+        'East Haven',
+        'Wallingford',
+        'Hamden',
+        'Cheshire',
+        'Branford',
+        'Derby',
+        'Guilford',
+        'Madison',
+        'Middlebury',
+        'Naugatuck',
+        'North Branford',
+        'North Haven',
+        'Orange',
+        'Oxford',
+        'Prospect',
+        'Seymour',
+        'Southbury',
+        'Wolcott',
+        'Woodbridge'
+    ];
+
+    const services = [
+        'Siding',
+        'Siding Installation',
+        'Siding Repair',
+        'Siding Replacement',
+        'Vinyl Siding',
+        'Fiber Cement Siding',
+        'Wood Siding',
+        'Metal Siding',
+        'Siding Contractors',
+        'Residential Siding',
+        'Commercial Siding',
+        'Siding Maintenance',
+        'Siding Inspection',
+        'Custom Siding Solutions',
+        'Siding Renovation',
+        'Siding Painting',
+        'Siding Cleaning',
+        'Energy-Efficient Siding',
+        'Insulated Siding',
+        'Eco-Friendly Siding'
+    ];
+
     return (
         <AnimatedElement>
             <section className="relative shadow-xl font-title p-[--padding]">
-                <div className="absolute flex inset-0 -z-1 ">
-                    <img src="/image/siding-banner.jpg" className="w-full h-full object-cover" />
+                <div className="absolute flex inset-0 -z-1">
+                    <img
+                        src="/image/instalacion-siding-vinilo.jpg"
+                        className="w-full h-full object-cover"
+                    />
                 </div>
+
                 <div className="container relative z-10 py-16 md:py-28 md:px-10">
                     <div
-                        className="flex flex-col py-10 text-4xl sm:text-5xl gap-20 sm:gap-24 "
+                        className="flex flex-col py-10 text-4xl sm:text-5xl gap-5 sm:gap-28"
                         style={{ "--textShadow": "-10px 8px 25px #000" }}
                     >
                         <span
                             className="w-full text-center md:text-start"
-                            style={{ textShadow: "var(--textShadow)" }}
+                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2" }} // Añadir line-height para controlar el espacio entre las líneas
                         >
                             Update Your Life
                         </span>
                         <span
-                            className="w-full text-center md:text-center"
-                            style={{ textShadow: "var(--textShadow)" }}
+                            className="w-full text-center md:text-start"
+                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2" }} // Añadir line-height para controlar el espacio entre las líneas
                         >
                             Transform Your Space
                         </span>
                         <span
-                            className="w-full text-center md:text-end"
-                            style={{ textShadow: "var(--textShadow)" }}
+                            className="w-full text-center md:text-start"
+                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2" }} // Añadir line-height para controlar el espacio entre las líneas
                         >
                             Renew Your Style
                         </span>
                     </div>
                 </div>
             </section>
+
             <section className="relative pb-10 pt-20 ">
                 <div className="absolute left-0 right-0 bottom-0 ">
                     <svg viewBox="0 0 1440 320" className="fill-[#ff9500] translate-y-1">
                         <path d="M0,224L48,234.7C96,245,192,267,288,266.7C384,267,480,245,576,245.3C672,245,768,267,864,266.7C960,267,1056,245,1152,202.7C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
                     </svg>
                 </div>
-                <div className="container relative z-10 flex flex-col w-full p-[--padding] sm:py-20 gap-5 justify-center items-center">
-                    <p className="text-3xl sm:text-5xl text-center font-title max-w-[700px]">
-                        We have expert staff in remodeling and changing siding both outdoors and
-                        indoors.
+                <div className="container relative z-10 flex flex-col w-full p-[--padding] sm:py-20 gap-5 justify-center items-center mt-0">
+                    <p
+                        className="text-3xl sm:text-5xl text-center font-title max-w-[700px]"
+                        style={{ lineHeight: "1.3" }}
+                    >
+                        Discover the best siding types for your home. Professional installation and
+                        guaranteed maintenance.
                     </p>
                     <div>
                         <Button
                             to="/contact-us"
-                            style="3 "
+                            style="3"
                             type="2"
                             className="mt-2 mr-auto font-title2 items-center py-5 px-5"
                         >
-                            <span className="text-lg sm:text-2xl ">Contact us now</span>{" "}
+                            <span className="text-lg sm:text-2xl">Contact us now</span>{" "}
                             <FontAwesomeIcon icon={faRightLong} className="text-xl sm:text-2xl" />
                         </Button>
                     </div>
@@ -66,14 +149,26 @@ export default function ServiceSiding() {
             <section className="relative bg-[#ff9500]">
                 <div className="relative z-10 container pb-10 sm:pb-32 lg:pb-40">
                     <BannerItem
-                        title="Protection and"
-                        subtitle="A modern finish for your facade"
+                        title="Discover the best siding types for your home. "
                         imgSrc="/image/banner-siding-2.jpg"
                         imgText="Siding work for a home in Stamford"
                         buttonText="Free Estimate"
                         imgTextClassName="text-white"
                         titleClassName="lg:pb-28"
                     />
+                    {/* SEO hidden text */}
+                    <div style={{ display: 'none' }}>
+                        {[...fairfieldCountyCities, ...newHavenCountyCities].map(city => (
+                            services.map(service => (
+                                <div key={`${city}-${service}`}>
+                                    {/* Palabras clave con "CT" */}
+                                    <p>{service} in {city}, CT.</p>
+                                    {/* Palabras clave sin "CT" */}
+                                    <p>{service} in {city}.</p>
+                                </div>
+                            ))
+                        ))}
+                    </div>
                 </div>
                 <div className=" w-full absolute left-0 right-0 -bottom-0 xl:-bottom-20 ">
                     <svg

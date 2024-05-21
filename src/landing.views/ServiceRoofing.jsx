@@ -12,17 +12,105 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function ServiceRoofing() {
+    const fairfieldCountyCities = [
+        'Bridgeport',
+        'Stamford',
+        'Norwalk',
+        'Danbury',
+        'Fairfield',
+        'Greenwich',
+        'Westport',
+        'Shelton',
+        'Trumbull',
+        'Stratford',
+        'Ridgefield',
+        'Bethel',
+        'Brookfield',
+        'Darien',
+        'Easton',
+        'Monroe',
+        'New Canaan',
+        'New Fairfield',
+        'Newtown',
+        'Redding',
+        'Weston',
+        'Wilton'
+    ];
+
+    const newHavenCountyCities = [
+        'New Haven',
+        'Waterbury',
+        'Meriden',
+        'Milford',
+        'West Haven',
+        'East Haven',
+        'Wallingford',
+        'Hamden',
+        'Cheshire',
+        'Branford',
+        'Derby',
+        'Guilford',
+        'Madison',
+        'Middlebury',
+        'Naugatuck',
+        'North Branford',
+        'North Haven',
+        'Orange',
+        'Oxford',
+        'Prospect',
+        'Seymour',
+        'Southbury',
+        'Wolcott',
+        'Woodbridge'
+    ];
+
+    const services = [
+        'Roofing',
+        'Roof Repair',
+        'Roof Installation',
+        'Roof Replacement',
+        'Roof Maintenance',
+        'Emergency Roof Repair',
+        'Commercial Roofing',
+        'Residential Roofing',
+        'Roof Inspection',
+        'Roof Leak Repair',
+        'Flat Roofing',
+        'Shingle Roofing',
+        'Metal Roofing',
+        'Tile Roofing',
+        'Slate Roofing',
+        'Roof Waterproofing',
+        'Roof Ventilation',
+        'Green Roofing',
+        'Solar Roofing',
+        'Roofing Contractors'
+    ];
+
     return (
         <AnimatedElement>
             <section>
                 <div className="container">
                     <BannerItem
                         title="Roofing Services"
-                        title2="in Stamford, CT"
+                        title2="in Fairfield and New haven County, CT"
                         subtitle="Maximize your coverage with our expert help"
                         imgSrc="/image/Banner 3.jpg"
-                        imgText="Claims couseling process"
+                        imgText="Roof replacement paid for by insurance"
                     />
+                    {/* SEO hidden text */}
+                    <div style={{ display: 'none' }}>
+                        {[...fairfieldCountyCities, ...newHavenCountyCities].map(city => (
+                            services.map(service => (
+                                <div key={`${city}-${service}`}>
+                                    {/* Palabras clave con "CT" */}
+                                    <p>{service} in {city}, CT.</p>
+                                    {/* Palabras clave sin "CT" */}
+                                    <p>{service} in {city}.</p>
+                                </div>
+                            ))
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -78,7 +166,7 @@ export default function ServiceRoofing() {
                                     />
                                 </div>
                                 <span className="text-lg font-content">
-                                    Project done for a family somew here in New Haven
+                                    Project done for a family in Norwalk, CT
                                 </span>
                             </div>
                             <div className="flex flex-col w-full items-center gap-3">
@@ -92,7 +180,7 @@ export default function ServiceRoofing() {
                                     />
                                 </div>
                                 <span className="text-lg font-content">
-                                    Project done for a family somew here in New Haven
+                                    Project done for a family in Stamford CT
                                 </span>
                             </div>
                         </div>
