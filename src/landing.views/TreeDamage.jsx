@@ -6,6 +6,74 @@ import SectionContact from "../landing.components/SectionContact";
 import { clsx } from "clsx";
 
 export default function TreeDamage() {
+    const fairfieldCountyCities = [
+        'Bridgeport',
+        'Stamford',
+        'Norwalk',
+        'Danbury',
+        'Fairfield',
+        'Greenwich',
+        'Westport',
+        'Shelton',
+        'Trumbull',
+        'Stratford',
+        'Ridgefield',
+        'Bethel',
+        'Brookfield',
+        'Darien',
+        'Easton',
+        'Monroe',
+        'New Canaan',
+        'New Fairfield',
+        'Newtown',
+        'Redding',
+        'Weston',
+        'Wilton'
+    ];
+
+    const newHavenCountyCities = [
+        'New Haven',
+        'Waterbury',
+        'Meriden',
+        'Milford',
+        'West Haven',
+        'East Haven',
+        'Wallingford',
+        'Hamden',
+        'Cheshire',
+        'Branford',
+        'Derby',
+        'Guilford',
+        'Madison',
+        'Middlebury',
+        'Naugatuck',
+        'North Branford',
+        'North Haven',
+        'Orange',
+        'Oxford',
+        'Prospect',
+        'Seymour',
+        'Southbury',
+        'Wolcott',
+        'Woodbridge'
+    ];
+
+    const services = [
+        'Tree Damage Repair',
+        'Emergency Tree Removal',
+        'Tree Trimming',
+        'Tree Pruning',
+        'Stump Removal',
+        'Tree Risk Assessment',
+        'Tree Health Inspection',
+        'Storm Damage Tree Removal',
+        'Tree Root Management',
+        'Tree Bracing and Cabling',
+        'Tree Damage Cleanup',
+        'Commercial Tree Services',
+        'Residential Tree Services'
+    ];
+
     return (
         <AnimatedElement>
             <section className="px-[--padding]">
@@ -15,7 +83,7 @@ export default function TreeDamage() {
                         title2="from problems"
                         subtitle="Learn more about our risk assessment"
                         imgSrc="/img/9.png"
-                        imgText="Claims couseling process"
+                        imgText="Claims counseling process"
                     />
                 </div>
             </section>
@@ -91,6 +159,19 @@ export default function TreeDamage() {
                     <SectionContact />
                 </div>
             </section>
+            {/* SEO hidden text */}
+            <div style={{ display: 'none' }}>
+                {[...fairfieldCountyCities, ...newHavenCountyCities].map(city => (
+                    services.map(service => (
+                        <div key={`${city}-${service}`}>
+                            {/* Palabras clave con "CT" */}
+                            <p>{service} in {city}, CT.</p>
+                            {/* Palabras clave sin "CT" */}
+                            <p>{service} in {city}.</p>
+                        </div>
+                    ))
+                ))}
+            </div>
         </AnimatedElement>
     );
 }

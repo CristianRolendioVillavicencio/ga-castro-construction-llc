@@ -185,7 +185,7 @@ function Item({ title, subtitle, src, alt }) {
         <div className="group/item relative flex justify-center w-full px-10 pb-20 pt-36 rounded-2xl overflow-hidden font-bold shadow-[0_3px_15px_2px_var(--color2-bg1)] hover:scale-105 transition-all duration-300">
             <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/10 group-hover/item:backdrop-blur-sm" />
-            <div className="opacity-0 relative z-10 flex flex-col items-center py-2 px-5 gap-5 rounded-lg text-[--color1-txt1] bg-[#ff9500]/70 group-hover/item:opacity-100 transition-all duration-300">
+            <div className="opacity-0 relative z-10 flex flex-col items-center py-2 px-5 gap-5 rounded-lg text-[--color1-txt1] bg-[#f8a61f]/70 group-hover/item:opacity-100 transition-all duration-300">
                 <h3 className=" sm:text-3xl font-title opacity-80">{title}</h3>
                 <span className="text-center  sm:text-xl font-title opacity-80">{subtitle}</span>
             </div>

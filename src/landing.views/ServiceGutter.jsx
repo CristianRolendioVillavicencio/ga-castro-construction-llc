@@ -145,7 +145,7 @@ export default function ServiceGutter() {
                     </div>
                 </div>
             </section>
-            <section className="relative bg-[#ff9500]">
+            <section className="relative bg-[#f8a61f]">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1440 320"

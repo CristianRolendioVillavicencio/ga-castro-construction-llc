@@ -64,15 +64,13 @@ export default function Header({
                             <Option name="Siding" to="/services/siding" />
                             <Option name="Gutter" to="/services/gutter" />
                             <Option name="Carpentry" to="/services/carpentry" />
-                            <Option name="Painting" to="/services/paint" />
+                            <Option name="Painting" to="/services/paint" />    
                         </Option>
-                        {/* <Option name="Insurance Claims" to="/services/insurance-claims"> */}
                         <Option name="Restoration" to="/restoration">
                             <Option name="Wind Damage" to="/restoration/wind-damage" />
                             <Option name="Water Damage" to="/restoration/water-damage" />
                             <Option name="Tree Damage" to="/restoration/tree-damage" />
                         </Option>
-                        {/* <Option name="Services Areas" to="/services-areas" /> */}
                         <Option name="Financing" to="/financing" />
                         <Option name="Gallery" to="/gallery" />
                         <Option name="Areas" to="/work-areas" />
@@ -87,9 +85,9 @@ export default function Header({
                     <div className="flex justify-center items-center">
                         <button
                             onClick={() => setIsVisibleModalFormConsult(true)}
-                            className="flex justify-center items-center px-4 py-2 md:py-3 rounded-full font-title2 bg-[#ff8609] text-white md:text-xl text-nowrap text-ellipsis"
+                            className="flex justify-center items-center px-4 py-2 md:py-3 rounded-full font-title2 bg-[#f8a61f] text-white md:text-xl text-nowrap text-ellipsis"
                         >
-                            Free Estimate
+                            Free Estimates
                         </button>
                     </div>
                     <div className="flex xl:hidden justify-center items-center">
@@ -129,7 +127,7 @@ function Option({ children, name, to, ...props }) {
             <Link
                 to={to}
                 className={`flex gap-1 text-md transition-all px-2 rounded-full duration-200 hover:opacity-100 text-nowrap uppercase justify-center items-center ${
-                    isLocation ? "opacity-100 bg-[#ef8f17]" : "opacity-90"
+                    isLocation ? "opacity-100 bg-[#f8a61f]" : "opacity-90"
                 }`}
             >
                 {name}

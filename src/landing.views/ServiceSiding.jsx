@@ -121,7 +121,7 @@ export default function ServiceSiding() {
 
             <section className="relative pb-10 pt-20 ">
                 <div className="absolute left-0 right-0 bottom-0 ">
-                    <svg viewBox="0 0 1440 320" className="fill-[#ff9500] translate-y-1">
+                    <svg viewBox="0 0 1440 320" className="fill-[#f8a61f] translate-y-1">
                         <path d="M0,224L48,234.7C96,245,192,267,288,266.7C384,267,480,245,576,245.3C672,245,768,267,864,266.7C960,267,1056,245,1152,202.7C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
                     </svg>
                 </div>
@@ -146,7 +146,7 @@ export default function ServiceSiding() {
                     </div>
                 </div>
             </section>
-            <section className="relative bg-[#ff9500]">
+            <section className="relative bg-[#f8a61f]">
                 <div className="relative z-10 container pb-10 sm:pb-32 lg:pb-40">
                     <BannerItem
                         title="Discover the best siding types for your home. "

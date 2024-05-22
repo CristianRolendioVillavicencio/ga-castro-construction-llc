@@ -5,25 +5,139 @@ import { faCheck, faRightLong } from "@fortawesome/free-solid-svg-icons";
 import SectionContact from "../landing.components/SectionContact";
 
 export default function WindDamage() {
+    const fairfieldCountyCities = [
+        "Bridgeport",
+        "Stamford",
+        "Norwalk",
+        "Danbury",
+        "Fairfield",
+        "Greenwich",
+        "Westport",
+        "Shelton",
+        "Trumbull",
+        "Stratford",
+        "Ridgefield",
+        "Bethel",
+        "Brookfield",
+        "Darien",
+        "Easton",
+        "Monroe",
+        "New Canaan",
+        "New Fairfield",
+        "Newtown",
+        "Redding",
+        "Weston",
+        "Wilton",
+    ];
+
+    const newHavenCountyCities = [
+        "New Haven",
+        "Waterbury",
+        "Meriden",
+        "Milford",
+        "West Haven",
+        "East Haven",
+        "Wallingford",
+        "Hamden",
+        "Cheshire",
+        "Branford",
+        "Derby",
+        "Guilford",
+        "Madison",
+        "Middlebury",
+        "Naugatuck",
+        "North Branford",
+        "North Haven",
+        "Orange",
+        "Oxford",
+        "Prospect",
+        "Seymour",
+        "Southbury",
+        "Wolcott",
+        "Woodbridge",
+    ];
+
+    const services = [
+        "Roofing",
+        "Roof Repair",
+        "Roof Installation",
+        "Roof Replacement",
+        "Roof Maintenance",
+        "Emergency Roof Repair",
+        "Commercial Roofing",
+        "Residential Roofing",
+        "Roof Inspection",
+        "Roof Leak Repair",
+        "Flat Roofing",
+        "Shingle Roofing",
+        "Metal Roofing",
+        "Tile Roofing",
+        "Slate Roofing",
+        "Roof Waterproofing",
+        "Roof Ventilation",
+        "Green Roofing",
+        "Solar Roofing",
+        "Siding",
+        "Siding Installation",
+        "Siding Repair",
+        "Siding Replacement",
+        "Vinyl Siding",
+        "Fiber Cement Siding",
+        "Wood Siding",
+        "Metal Siding",
+        "Siding Contractors",
+        "Residential Siding",
+        "Commercial Siding",
+        "Siding Maintenance",
+        "Siding Inspection",
+        "Custom Siding Solutions",
+        "Siding Renovation",
+        "Siding Painting",
+        "Siding Cleaning",
+        "Energy-Efficient Siding",
+        "Insulated Siding",
+        "Eco-Friendly Siding",
+    ];
+
     return (
         <AnimatedElement>
             <section className="relative">
                 <div className="absolute inset-0 w-full h-full ">
-                    <img src="/img/14.jpg" className="w-full h-full object-cover" />
+                    <img src="/img/wind-damage.jpg" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent" />
                 <div className="relative z-10 flex flex-col px-[--padding] pb-32 pt-64 text-[--color1-txt1] items-center">
                     <div className="flex flex-col items-center gap-14">
                         <h3
-                            className="font-title text-3xl sm:text-5xl text-center text-balance max-w-[800px] drop-shadow-md"
+                            className="font-title text-2xl sm:text-4xl text-center text-balance max-w-[800px] drop-shadow-md"
                             style={{
-                                textShadow:
-                                    "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
+                                textShadow: "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
+                                marginBottom: "-10px"
                             }}
                         >
-                            The Excellent Storm Damage Repair Service
+                            THE HIDDEN DANGERS OF
                         </h3>
+                        <h3
+                            className="font-title text-5xl sm:text-7xl text-center text-balance max-w-[800px] drop-shadow-md"
+                            style={{
+                                textShadow: "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
+                                marginBottom: "-10px"
+                            }}
+                        >
+                            WIND DAMAGE TO YOUR HOME
+                        </h3>
+                        <h3
+                            className="font-title text-2xl sm:text-3xl text-center text-balance max-w-[800px] drop-shadow-md"
+                            style={{
+                                textShadow: "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
+                            }}
+                        >
+                            Learn how to protect your home and what to do if you suffer wind damage.
+                        </h3>
+
+
+
                         <Button
                             href="#section-more"
                             style="3"
@@ -35,25 +149,77 @@ export default function WindDamage() {
                         </Button>
                     </div>
                 </div>
-                <svg
-                    className="relative z-10 fill-[--color2-bg] translate-y-1"
-                    viewBox="0 0 1440 320"
-                >
-                    <path d="M0,96L34.3,128C68.6,160,137,224,206,240C274.3,256,343,224,411,213.3C480,203,549,213,617,197.3C685.7,181,754,139,823,106.7C891.4,75,960,53,1029,90.7C1097.1,128,1166,224,1234,250.7C1302.9,277,1371,235,1406,213.3L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
-                </svg>
+                
+            </section>
+            
+            <section id="section-more" className="relative -translate-y-1">
+                <img
+                    className="absolute inset-0 w-full h-full object-cover -z-10"
+                    src="/img/8.png"
+                    alt="Image of Roof in Wind Damage"
+                />
+                <div className="absolute inset-0 bg-black/10 backdrop-blur-sm -z-10" />
+                
+
+                <div className="px-[--padding] pt-24 pb-52">
+                    <div className="container flex flex-col justify-center items-center gap-10">
+                        <h3
+                            className="font-title text-3xl sm:text-5xl text-white text-center text-balance max-w-[800px] drop-shadow-md"
+                            style={{
+                                textShadow:
+                                    "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
+                            }}
+                        >
+                            What is Wind?
+
+                        </h3>
+                        <p
+                            className="text-base sm:text-lg text-gray-300 text-center text-pretty font-content font-bold tracking-wider"
+                            style={{
+                                textShadow:
+                                    "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
+                            }}
+                        >
+                            As National Geographic explains, if the sun heats up the Earth in an uneven pattern, it creates warm spots and cool spots. By nature, cool air rushes to the warm zone, thereby creating what we call wind.
+
+                            There are different ranges of wind, all indicative of their strength and direction. The Beaufort Wind Force Scale outlines the various wind strengths from a calm force 0 (less than 1 mph) to a hurricane-level force 12 (73+ mph). The Beaufort scale describes force 8 to be what’s called a fresh gale of wind, blowing at 39-46 mph. This is when you’ll start to see pieces of trees breaking and blowing around. A strong gale of wind blows at 47-54 mph and becomes a bigger threat to your home, particularly the shingles on your roof. According to FEMA, your roof, along with your doors, windows and garage are the four most wind-damaged areas of a home.
+                        </p>
+                    </div>
+                </div>
             </section>
             <section className="px-[--padding] py-10 bg-[--color2-bg]">
                 <div className="container flex flex-col items-center gap-12">
                     <h3 className="font-title text-3xl sm:text-5xl text-[--color2-txt] text-center text-balance max-w-[800px]">
-                        Our wind and storm damage cleanup services includes:
+                    What’s the Damage?
                     </h3>
                     <div className="flex justify-center items-center gap-3">
                         <span className="flex justify-center items-center w-9 border border-gray-400 rounded-lg p-2 aspect-square">
                             <FontAwesomeIcon icon={faCheck} className="text-green-500 text-xl" />
                         </span>
                         <span className="font-content font-bold text-[--color2-txt] text-lg tracking-wide">
-                            Residental and commercial services
+                        Doors – Double-entry doors, specifically, are at risk during hurricane-speed gusts. With double-entry doors, you typically have one active door that opens and one that’s fixed. These types of doors often contain glass, which can break when winds run over 120 mph. With or without a window, doors can be pushed open and become a welcome invitation for water damage. If the storm doesn’t produce rain or flooding, wind coming into your home presses against your interior walls and roof. Like a pot of boiling water, the pressure eventually blows the top off.
                         </span>
+                    </div>
+                    <div className="flex justify-center items-center gap-3">
+                        <span className="flex justify-center items-center w-9 border border-gray-400 rounded-lg p-2 aspect-square">
+                            <FontAwesomeIcon icon={faCheck} className="text-green-500 text-xl" />
+                        </span>
+                        <span className="font-content font-bold text-[--color2-txt] text-lg tracking-wide">
+                        Windows – Windows are another entry point for your home. Should winds blow at a force 12, unsecured windows are likely to break. Shattered glass blowing through your house is dangerous enough. But, again, an exposed entryway allows wind to access the inside of your home. This not only will cause damage to your personal belongings but tests the integrity of your roof.                        </span>
+                    </div>
+                    <div className="flex justify-center items-center gap-3">
+                        <span className="flex justify-center items-center w-9 border border-gray-400 rounded-lg p-2 aspect-square">
+                            <FontAwesomeIcon icon={faCheck} className="text-green-500 text-xl" />
+                        </span>
+                        <span className="font-content font-bold text-[--color2-txt] text-lg tracking-wide">
+                        Roof – FEMA studies have shown that a home’s roof is the most vulnerable to wind damage. If even one window or door has been compromised, wind can increase the uplift forces on the roof and literally blast it off of your house. The best case scenario would be you lose a few shingles. Sometimes, roof damage isn’t as obvious as a few missing shingles, though. Be sure to also inspect exhaust pipes, overhangs and where your roof meets walls. Calling a professional to check for hidden structural damage is always a smart move.                        </span>
+                    </div>
+                    <div className="flex justify-center items-center gap-3">
+                        <span className="flex justify-center items-center w-9 border border-gray-400 rounded-lg p-2 aspect-square">
+                            <FontAwesomeIcon icon={faCheck} className="text-green-500 text-xl" />
+                        </span>
+                        <span className="font-content font-bold text-[--color2-txt] text-lg tracking-wide">
+                        Garage – You may not have considered it, but your garage is also vulnerable to hurricane-speed winds. A double-garage door is riskiest, because the larger surface area captures more wind – like a sail on a boat. Winds of 120 mph or more can pull the garage door off its tracks or cause it to collapse to the pressure.                        </span>
                     </div>
                     <Button
                         to="/contact-us"
@@ -67,52 +233,29 @@ export default function WindDamage() {
                     </Button>
                 </div>
             </section>
-            <section id="section-more" className="relative -translate-y-1">
-                <img
-                    className="absolute inset-0 w-full h-full object-cover -z-10"
-                    src="/img/8.png"
-                    alt="Image of Roof in Wind Damage"
-                />
-                <div className="absolute inset-0 bg-black/10 backdrop-blur-sm -z-10" />
-                <svg className="fill-[--color2-bg]" viewBox="0 0 1440 320">
-                    <path d="M0,224L48,218.7C96,213,192,203,288,202.7C384,203,480,213,576,192C672,171,768,117,864,117.3C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-                </svg>
-                <div className="px-[--padding] pt-24 pb-52">
-                    <div className="container flex flex-col justify-center items-center gap-10">
-                        <h3
-                            className="font-title text-3xl sm:text-5xl text-white text-center text-balance max-w-[800px] drop-shadow-md"
-                            style={{
-                                textShadow:
-                                    "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
-                            }}
-                        >
-                            What does wind damage entail?
-                        </h3>
-                        <p
-                            className="text-base sm:text-lg text-gray-300 text-center text-pretty font-content font-bold tracking-wider"
-                            style={{
-                                textShadow:
-                                    "1px 0px 1px #000, -1px 0px 1px #000, 0 1px 1px #000, 0 -1px 1px #000",
-                            }}
-                        >
-                            Wind damage is commonly associated with hurricanes and tornadoes due to
-                            their powerful winds exceeding 100 mph, posing a significant threat to
-                            homes. However, wind damage can occur in any intense storm with winds
-                            exceeding 50 mph. These damaging winds, often resulting from downdrafts,
-                            can lead to various issues such as roof damage, fallen trees impacting
-                            roofs or windows, and damage to garages. We offers free wind damage
-                            restoration estimates for New Haven & Fairfield homes affected by severe
-                            storms.
-                        </p>
-                    </div>
-                </div>
-            </section>
             <section className="relative px-[--padding] py-10">
                 <div className="absolute left-0 bottom-full w-full h-3 bg-gradient-to-b from-transparent via-white/80 to-white" />
                 <div className="container">
                     <SectionContact />
                 </div>
             </section>
+            {/* SEO hidden text */}
+            <div style={{ display: "none" }}>
+                {[...fairfieldCountyCities, ...newHavenCountyCities].map((city) =>
+                    services.map((service) => (
+                        <div key={`${city}-${service}`}>
+                            {/* Palabras clave con "CT" */}
+                            <p>
+                                {service} in {city}, CT.
+                            </p>
+                            {/* Palabras clave sin "CT" */}
+                            <p>
+                                {service} in {city}.
+                            </p>
+                        </div>
+                    ))
+                )}
+            </div>
         </AnimatedElement>
     );
 }
