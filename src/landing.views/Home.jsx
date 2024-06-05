@@ -33,23 +33,17 @@ export default function Home({ info }) {
 
                 <OurComponentSection />
 
-                <div className="relative bg-[#f8a61f] mt-5 sm:mt-36">
-                    <svg
-                        viewBox="0 0 1440 320"
-                        className="absolute bottom-full left-0 right-0 translate-y-1 fill-[#f8a61f]"
-                    >
-                        <path d="M0,288L80,266.7C160,245,320,203,480,192C640,181,800,203,960,197.3C1120,192,1280,160,1360,144L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-                    </svg>
-                    <div className=" container px-[--padding] pb-10 sm:pb-60">
+                <div className="relative bg-[#f8a61f] mt-5 sm:mt-35 w-full">
+                    {/* Testimonials Section */}
+                    <section className="relative px-[var(--padding)] pt-12">
+                        <h2 className="text-4xl font-bold mb-8 text-center" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' }}>
+                            TESTIMONIALS FROM SATISFIED CUSTOMERS
+                        </h2>
                         <GoogleItems classNameWrapper="relative z-20" />
-                    </div>
-                    <svg
-                        viewBox="0 0 1440 320"
-                        className="absolute z-10 bottom-0 left-0 right-0  translate-y-1 fill-[#000000]"
-                    >
-                        <path d="M0,288L40,277.3C80,267,160,245,240,240C320,235,400,245,480,234.7C560,224,640,192,720,197.3C800,203,880,245,960,250.7C1040,256,1120,224,1200,181.3C1280,139,1360,85,1400,58.7L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
-                    </svg>
+                    </section>
                 </div>
+
+
                 <div className="flex flex-col  fill-[var(--color2-bg)] text-[var(--color2-txt1)]">
                     <div className="bg-[var(--color2-bg)] p-5">
                         <div className="container flex flex-col justify-center">
@@ -92,12 +86,7 @@ export default function Home({ info }) {
                     </div>
                 </div>
                 <section className="relative px-[var(--padding)]">
-                    <svg
-                        viewBox="0 0 1440 320"
-                        className="-translate-y-1 absolute z-10 top-0 left-0 right-0 fill-[#000000]"
-                    >
-                        <path d="M0,224L60,197.3C120,171,240,117,360,101.3C480,85,600,107,720,101.3C840,96,960,64,1080,53.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
-                    </svg>
+                    
                     <div className="relative z-10 container pt-14 sm:pt-24 lg:pt-40">
                         <SectionContact />
                     </div>

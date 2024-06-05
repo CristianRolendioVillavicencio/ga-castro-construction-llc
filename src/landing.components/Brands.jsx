@@ -10,7 +10,7 @@ export default function Brands() {
                 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)" }}
                 className="text-center text-5xl font-bold mb-6"
             >
-                BRANDS WE WORK WITH
+                QUALITY YOU CAN TRUST
             </h2>
             {/* Cambié la clase de text-lg a text-2xl para hacer el texto más grande */}
             <p className="text-center text-2xl mb-10">
@@ -20,7 +20,7 @@ export default function Brands() {
                 <Swiper
                     slidesPerView={5}
                     modules={[Autoplay]}
-                    autoplay={{ delay: 5000 }}
+                    autoplay={{ delay: 1000 }}
                     speed={1500}
                     loop={true}
                     grabCursor={true}
