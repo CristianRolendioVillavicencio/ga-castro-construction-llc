@@ -43,7 +43,7 @@ export default function Footer() {
                             rel="noreferrer"
                             className="hover:underline opacity-70"
                         >
-                            Email Access
+                            Personal
                         </a>
                     </div>
                     <div className="mx-auto lg:ml-auto lg:mx-0 opacity-70 w-full max-w-48">

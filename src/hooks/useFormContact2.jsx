@@ -56,9 +56,9 @@ export default function useFormContact2() {
         if (!message) {
             isError = true;
             setMessageError("Message is required");
-        } else if (message?.length < 50) {
+        } else if (message?.length < 20) {
             isError = true;
-            setMessageError("Minimum 50 characters");
+            setMessageError("Minimum 20 characters");
         } else setMessageError("");
         if (!terms) {
             isError = true;

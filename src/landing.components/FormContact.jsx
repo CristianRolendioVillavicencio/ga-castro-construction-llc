@@ -67,7 +67,7 @@ export default function FormContact() {
                     type="textarea"
                 />
 
-                <div className="flex text-[#171640] w-full justify-center ">
+                <div className="flex text-[#000000] w-full justify-center ">
                     <Button
                         style="5"
                         type="1"

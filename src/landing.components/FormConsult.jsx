@@ -38,8 +38,11 @@ export default function FormConsult({ className = "" }) {
                     className
                 }
             >
-                <h3 className="font-title text-4xl mb-5 text-center">Leave us your concerns</h3>
-
+                <h3 className="font-title text-4xl mb-5 text-center">Get a FREE Estimate</h3>
+                <p className="text-center mb-0.1">
+                    Fill out the form below to have Ga Castro Construction LLC. contact you shortly,
+                    or call 1-800-838-8186 to contact Ga Castro Construction LLC.
+                </p>
                 <Input
                     value={name}
                     onChange={({ target }) => setName(target.value)}
@@ -86,8 +89,8 @@ export default function FormConsult({ className = "" }) {
                         />
                         <div className="block">
                             <p>
-                                I agree that GA Castro Constructions LLC contact me by phone, text
-                                messages or emails. Reply STOP to stop receiving these messages.
+                                I agree that GA Castro Constructions LLC contact me by phone or
+                                emails.
                             </p>
                             {termsError && (
                                 <span className="text-red-500 text-sm">*{termsError}</span>
@@ -110,7 +113,7 @@ export default function FormConsult({ className = "" }) {
                         >
                             {!loading ? (
                                 <>
-                                    <span className="sm:text-xl font-title2">Send consult</span>{" "}
+                                    <span className="sm:text-xl font-title2">Send Information</span>{" "}
                                     <FontAwesomeIcon
                                         className="text-xl sm:text-2xl "
                                         icon={faPaperPlane}
@@ -147,7 +150,12 @@ function Input({ type, placeholder, value, onChange, error = null }) {
     };
     return (
         <div className="relative flex-1 w-full">
-            {error && <span className="absolute top-3 right-4 text-red-400">*{error}</span>}
+            {error && (
+                <span className="absolute top-3 right-4" style={{ color: "#FF0000" }}>
+                    *{error}
+                </span>
+            )}
+
             {type == "textarea" ? (
                 <textarea {...renderProps} className={"min-h-28 rounded-3xl " + classNameInput} />
             ) : (

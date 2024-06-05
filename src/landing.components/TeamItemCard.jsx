@@ -1,15 +1,12 @@
 import info from "../mooks/info.json";
+
 export default function TeamItemCard({ name, rol, description = "", photo, social, type = 1 }) {
     if (type == 1)
         return (
             <div className="bg-[#eaecf8] hover:shadow-2xl hover:bg-white font-bold">
                 <div className="flex flex-col gap-3 items-center justify_center pb-5">
                     <div className="relative flex flex-col justify-center items-center w-full h-48">
-                        <img
-                            src="/img/card-team.jpg"
-                            style={{ clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 80%)" }}
-                            className="w-full h-full object-cover"
-                        />
+                        <img src="/img/card-team.jpg" className="w-full h-full object-cover" />
                         <div className="absolute bottom-2 rounded-full overflow-hidden flex max-w-28 w-full items-center justify-center aspect-square">
                             <img src={photo} className="w-fill h-full object-contain" />
                         </div>
@@ -21,9 +18,7 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                         </div>
                         <p className="text-sm font-normal text-center opacity-85">{description}</p>
                     </div>
-
                     <div className="w-full h-0.5 bg-gray-200 my-2"></div>
-
                     <div className="flex items-center justify-center gap-4">
                         {social.map(({ id, url, color, icon }) => (
                             <a key={id} href={url}>
@@ -38,6 +33,7 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                 </div>
             </div>
         );
+
     if (type == 2)
         return (
             <div className="relative font-bold rounded-2xl h-56 flex justify-center">
@@ -73,6 +69,7 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                 </div>
             </div>
         );
+
     if (type == 3)
         return (
             <div className="relative group/card bg-white text-black font-content flex flex-col  pb-5 mt-10 hover:mt-0 items-center rounded-lg transition-all ">
@@ -80,7 +77,6 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                     src={photo}
                     className="absolute bg-[--color1-bg] -top-7 max-w-32 aspect-square -translate-y-10 rounded-md shadow-xl group-hover/card:max-w-36 transition-all duration-200"
                 />
-
                 <div className="flex flex-col items-center pt-16 group-hover/card:pt-20 transition-all">
                     <h2 className="font-title2 text-2xl">{name}</h2>
                     <span className="text-lg opacity-80 -translate-y-1">{rol}</span>

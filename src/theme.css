@@ -1,24 +1,21 @@
 :root {
-    --color1-bg: #ff9500;
-    --color1-bg1: #ff950062;
-    --color1-txt: #000000;
-    --color1-txt1: #ffffff;
+    --color1-bg: #f8a61f; /* Color principal */
+    --color1-bg1: #ffb84d; /* Tono más claro del color principal */
+    --color1-txt: #1a1a1a; /* Texto oscuro para buen contraste */
+    --color1-txt1: #ffffff; /* Texto claro para uso en fondos oscuros */
 
-    --color2-bg: #141422;
-    --color2-bg1: #14142257;
-    --color2-txt: #ffffff;
-    --color2-txt1: #ffa830;
+    --color2-bg: #262626; /* Negro suave para menos contraste */
+    --color2-bg1: #3d3d3d; /* Tono intermedio del negro */
+    --color2-txt: #ffffff; /* Texto blanco para contraste en fondo oscuro */
+    --color2-txt1: #f8a61f; /* Color principal para resaltar en fondo oscuro */
 
-    --color3-bg: #ffffff;
-    --color3-txt: #000000;
-    --color3-txt1: #ffa830;
+    --color3-bg: #ffffff; /* Fondo blanco para secciones claras */
+    --color3-txt: #1a1a1a; /* Texto oscuro para buen contraste en fondo claro */
+    --color3-txt1: #f8a61f; /* Color principal para resaltar en fondo claro */
 
-    --color4-bg: #f9f9f9;
-    --color4-txt: #cccccc;
-
-    --color4-bg: #13120d;
-    --color4-txt: #ffffff;
-    --color4-txt2: #ff9500;
+    --color4-bg: #f1f1f1; /* Fondo gris claro para una alternativa suave */
+    --color4-txt: #333333; /* Texto gris oscuro para buen contraste */
+    --color4-txt2: #f8a61f; /* Color principal para resaltar en fondo gris */
 }
 
 .--color1-bg {

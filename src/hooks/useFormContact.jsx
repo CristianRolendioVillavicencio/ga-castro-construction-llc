@@ -46,16 +46,16 @@ export default function useFormContact() {
         if (!address) {
             isError = true;
             setAddressError("Address is required");
-        } else if (address?.length < 10) {
+        } else if (address?.length < 1) {
             isError = true;
             setAddressError("Address is too short");
         } else setAddressError("");
         if (!message) {
             isError = true;
             setMessageError("Message is required");
-        } else if (message?.length < 50) {
+        } else if (message?.length < 10) {
             isError = true;
-            setMessageError("Minimum 50 characters");
+            setMessageError("Minimum 10 characters");
         } else setMessageError("");
         return isError;
     };

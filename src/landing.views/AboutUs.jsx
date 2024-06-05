@@ -17,6 +17,7 @@ export default function AboutUs() {
     const { info } = useContext(InfoContext);
     return (
         <AnimatedElement>
+            {/* Header Section */}
             <section className="relative overflow-hidden p-[--padding]">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/image/ciudad.jpg" className="w-full h-full object-cover" />
@@ -37,6 +38,8 @@ export default function AboutUs() {
                     </div>
                 </div>
             </section>
+
+            {/* Concepts Section */}
             <section className="p-[--padding] pt-0">
                 <div className="container flex justify-center text-[--color1-txt1] font-title">
                     <ConcepsSection
@@ -47,6 +50,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
+            {/* Experience Section */}
             <section className="relative sm:py-28 xl:py-0">
                 <div className="md:absolute w-full">
                     <div className="relative z-10 container flex flex-col md:flex-row w-full font-title gap-10 lg:gap-32 justify-center items-center">
@@ -56,7 +60,7 @@ export default function AboutUs() {
                         <div className="flex flex-col gap-10">
                             <div className="flex flex-col items-center">
                                 <div className="flex flex-col ">
-                                    <h1 className="text-8xl">+25</h1>
+                                    <h1 className="text-8xl">+ 25</h1>
                                     <h1 className="text-6xl">YEARS</h1>
                                 </div>
                                 <h3 className="text-3xl sm:text-5xl text-[--color1-bg]">
@@ -67,12 +71,14 @@ export default function AboutUs() {
                             <div className="flex flex-col gap-2 md:text-[--color1-txt1]">
                                 <Item title="Residential Roofing" icon={faCheck} />
                                 <Item title="Commercial Roofing" icon={faCheck} />
-                                <Item title="Industrial Roofing" icon={faCheck} />
+                                <Item title="Insurance Claim Estimates" icon={faCheck} />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* Swiper Section */}
             <section>
                 <div className="fill-[var(--color2-bg)] text-[var(--color2-txt1)]">
                     <svg viewBox="0 0 1440 220" className="translate-y-1">
@@ -111,37 +117,20 @@ export default function AboutUs() {
                             </Button>
                         </div>
                     </div>
+                    {/* Commented SVG (optional) */}
                     {/* <svg viewBox="0 0 1440 320" className="-translate-y-1">
                         <path d="M0,224L60,197.3C120,171,240,117,360,101.3C480,85,600,107,720,101.3C840,96,960,64,1080,53.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
                     </svg> */}
                 </div>
             </section>
-            <section className="relative px-[var(--padding)] pt-48">
-                <svg
-                    viewBox="0 0 1440 320"
-                    className="-translate-y-1 absolute z-10 top-0 left-0 right-0 fill-[#141422]"
-                >
-                    <path d="M0,224L60,197.3C120,171,240,117,360,101.3C480,85,600,107,720,101.3C840,96,960,64,1080,53.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
-                </svg>
+
+            {/* Testimonials Section */}
+            <section className="relative px-[var(--padding)] pt-12">
+                <h2 className="text-4xl font-bold mb-8 text-center">TESTIMONIALS FROM SATISFIED CUSTOMERS</h2>
                 <GoogleItems classNameWrapper="relative z-20" />
             </section>
 
-            {/* <section className="px-[var(--padding)]">
-                <div className="container flex flex-col gap-20">
-                    <h3 className="font-title font-bold text-2xl sm:text-5xl text-center text-balance">
-                        Here you have more information about our certificates
-                    </h3>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <Item title="Insert document name here" url="https://www.google.com" />
-                        <Item title="Insert document name here" url="https://www.google.com" />
-                        <Item title="Insert document name here" url="https://www.google.com" />
-                        <Item title="Insert document name here" url="https://www.google.com" />
-                        <Item title="Insert document name here" url="https://www.google.com" />
-                        <Item title="Insert document name here" url="https://www.google.com" />
-                    </div>
-                </div>
-            </section> */}
-
+            {/* SectionContact Component */}
             <section className="px-[var(--padding)] mt-20">
                 <div className="container relative z-10">
                     <SectionContact />
@@ -150,23 +139,6 @@ export default function AboutUs() {
         </AnimatedElement>
     );
 }
-
-// function Item({ title, url }) {
-//     return (
-//         <div className="flex flex-col gap-5">
-//             <span className="font-title font-bold text-2xl text-center">{title}</span>
-//             <Button
-//                 style="5"
-//                 as="a"
-//                 text="Download now"
-//                 href={url}
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 className="py-3 px-10 mx-auto text-lg text-center bg-black/20 shadow-[0_5px_10px_0_var(--color2-bg1)]"
-//             />
-//         </div>
-//     );
-// }
 
 function Item({ title, icon }) {
     return (
