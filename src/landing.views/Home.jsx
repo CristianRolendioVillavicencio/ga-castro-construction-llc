@@ -85,6 +85,15 @@ export default function Home({ info }) {
                         </div>
                     </div>
                 </div>
+
+                
+           
+
+
+
+
+
+
                 <section className="relative px-[var(--padding)]">
                     
                     <div className="relative z-10 container pt-14 sm:pt-24 lg:pt-40">
