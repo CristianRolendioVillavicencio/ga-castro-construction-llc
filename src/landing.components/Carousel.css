@@ -232,14 +232,11 @@
     }
 }
 
-
-
-
 /*----------------
 [ team / team ]
 ------------------*/
-.team{
-    background: #f9f9f9;
+.team {
+    background: #ffffff;
     padding: 106px 0 70px;
 }
 .team .more-team {
@@ -262,21 +259,27 @@
     background-color: #1151d3;
     color: #fff;
 }
-.team .matter{
+.team .matter {
     border-radius: 2px;
     overflow: hidden;
     box-shadow: 0 1px 30px rgba(0, 0, 0, 0);
     transition: all 300ms linear 0ms;
 }
-.team .matter:hover, .team .active .matter, .meeteam-page .team .matter:hover{
+.team .matter:hover,
+.team .active .matter,
+.meeteam-page .team .matter:hover {
     box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
 }
-.team .matter:hover .image .teamoverlay, .team .matter:hover .caption, .team .active .matter .caption, .team .active .matter .image .teamoverlay{
+.team .matter:hover .image .teamoverlay,
+.team .matter:hover .caption,
+.team .active .matter .caption,
+.team .active .matter .image .teamoverlay {
     opacity: 1;
-} 
-.team .matter:hover .image .social, .team .active .matter .image .social{
+}
+.team .matter:hover .image .social,
+.team .active .matter .image .social {
     transform: translateY(0);
-}  
+}
 .team .matter .image {
     position: relative;
     overflow: hidden;
@@ -296,7 +299,7 @@
     transition: all 180ms linear 0ms;
     opacity: 0;
 }
-.team .matter .image .social{
+.team .matter .image .social {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -307,7 +310,7 @@
     transform: translateY(100%);
     transition: all 220ms linear 0ms;
 }
-.team .matter .image .social li{
+.team .matter .image .social li {
     margin: 0 5px;
     padding: 0;
     height: 38px;
@@ -318,37 +321,39 @@
     border-radius: 100%;
     transition: all 300ms linear 0ms;
 }
-.team .matter .image .social li:first-child{
+.team .matter .image .social li:first-child {
     background-color: #5d82d1;
 }
-.team .matter .image .social li:nth-child(2){
+.team .matter .image .social li:nth-child(2) {
     background-color: #40bff5;
 }
-.team .matter .image .social li:last-child{
+.team .matter .image .social li:last-child {
     background-color: #eb5e4c;
 }
-.team .matter .image .social li a{
+.team .matter .image .social li a {
     color: #fff;
 }
-.team .matter .caption{
+.team .matter .caption {
     opacity: 0;
     padding: 35px 30px 33px;
     background-color: #fff;
     text-align: center;
     transition: all 300ms linear 0ms;
 }
-.team .matter .caption h4, .about-office .team .matter h4  {
+.team .matter .caption h4,
+.about-office .team .matter h4 {
     font-size: 18px;
     line-height: 26px;
     margin: 0 0 5px;
     font-weight: 700;
-    font-family: 'Poppins' , sans-serif; 
+    font-family: "Poppins", sans-serif;
     color: #282828;
 }
-.team .matter .caption p, .about-office .team .matter p{
+.team .matter .caption p,
+.about-office .team .matter p {
     font-size: 13px;
     margin: 0px;
 }
-.team .ourteam .owl-wrapper-outer{
+.team .ourteam .owl-wrapper-outer {
     padding: 40px 0;
 }

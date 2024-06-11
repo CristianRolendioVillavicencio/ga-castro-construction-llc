@@ -7,6 +7,7 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                 <div className="flex flex-col gap-3 items-center justify_center pb-5">
                     <div className="relative flex flex-col justify-center items-center w-full h-48">
                         <img src="/img/card-team.jpg" className="w-full h-full object-cover" />
+
                         <div className="absolute bottom-2 rounded-full overflow-hidden flex max-w-28 w-full items-center justify-center aspect-square">
                             <img src={photo} className="w-fill h-full object-contain" />
                         </div>

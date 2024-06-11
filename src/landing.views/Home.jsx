@@ -24,7 +24,7 @@ export default function Home({ info }) {
 
                 <div className="relative w-full">
                     <div className="absolute inset-0 ">
-                        <img src="img/15.png" className="w-full h-full object-cover" />
+                        <img src="" className="w-full h-full object-cover" />
                     </div>
                     <div className="relative z-10 container p-[var(--padding)] md:px-0 ">
                         <InstantQuote />
@@ -35,17 +35,28 @@ export default function Home({ info }) {
 
                 <div className="relative bg-[#f8a61f] mt-5 sm:mt-35 w-full">
                     {/* Testimonials Section */}
-                    <section className="relative px-[var(--padding)] pt-12">
+                    <section className="relative px-[var(--padding)] pt-20 pb-20">
                         <h2 className="text-4xl font-bold mb-8 text-center" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' }}>
-                            TESTIMONIALS FROM SATISFIED CUSTOMERS
+                        WHAT OUR CUSTOMERS SAY ABOUT US 
+
                         </h2>
-                        <GoogleItems classNameWrapper="relative z-20" />
+                        <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-[var(--color2-txt)] mt-5" style={{ lineHeight: '1.8' }}>
+                        Discover the experiences of our satisfied clients and see why they choose us.
+
+                        </p>
+                        
+                        <GoogleItems classNameWrapper="relative z-20 mt-10" />
                     </section>
                 </div>
 
 
+
+
+                                
+                {/* Our team Section - start */}
+
                 <div className="flex flex-col  fill-[var(--color2-bg)] text-[var(--color2-txt1)]">
-                    <div className="bg-[var(--color2-bg)] p-5">
+                    <div className="bg-[var(--color2-bg)] p-20">
                         <div className="container flex flex-col justify-center">
                             <h2 className="text-3xl sm:text-5xl text-center font-title">
                                 Our Team
@@ -85,9 +96,11 @@ export default function Home({ info }) {
                         </div>
                     </div>
                 </div>
+                {/* Our team Section - Finish */}
 
-                
-           
+
+
+
 
 
 

@@ -121,9 +121,10 @@
     {
         "id": 9,
         "name": "Juan P Villavicencio",
-        "rol": "Sales Representative",
+        "rol": "Project Manager",
         "description": "At GA Castro Construction LLC, roofing is our passion, and quality is our promise. As experts in the field, we are committed to excellence and reliability. We've built our reputation on these principles.",
-        "photo": "./team/1.png",
+        "photo": "./team/8.png",
+        
         "social": [
             {
                 "id": 1,
