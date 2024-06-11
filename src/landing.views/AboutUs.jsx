@@ -2,7 +2,6 @@ import AnimatedElement from "../components/AnimatedElement";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Button from "../landing.components/Button";
 import { Autoplay } from "swiper/modules";
 import teams from "./../mooks/team.json";
 import SectionContact from "../landing.components/SectionContact";
@@ -54,12 +53,12 @@ export default function AboutUs() {
             <section className="relative sm:py-28 xl:py-0">
                 <div className="md:absolute w-full">
                     <div className="relative z-10 container flex flex-col md:flex-row w-full font-title gap-10 lg:gap-32 justify-center items-center">
-                        <div className="max-w-96 w-full  h-full flex border-solid border-4 border-[--color1-bg] rounded-md">
+                        <div className="max-w-96 w-full h-full flex border-solid border-4 border-[--color1-bg] rounded-md">
                             <img src="./team/2.png" className="bg-white" />
                         </div>
                         <div className="flex flex-col gap-10">
                             <div className="flex flex-col items-center">
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col">
                                     <h1 className="text-8xl">+ 25</h1>
                                     <h1 className="text-6xl">YEARS</h1>
                                 </div>
@@ -80,13 +79,17 @@ export default function AboutUs() {
 
             {/* Swiper Section */}
             <section>
+                {" "}
+                {/* Añadí mt-10 y mb-10 para más espacio superior e inferior */}
                 <div className="fill-[var(--color2-bg)] text-[var(--color2-txt1)]">
                     <svg viewBox="0 0 1440 220" className="translate-y-1">
                         <path d="M0,192L48,186.7C96,181,192,171,288,165.3C384,160,480,160,576,154.7C672,149,768,139,864,138.7C960,139,1056,149,1152,144C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
                     </svg>
-                    <div className="bg-[var(--color2-bg)] p-5 md:pt-52">
+                    <div className="bg-[var(--color2-bg)] p-16 md:pt-52">
                         <div className="container flex flex-col justify-center">
-                            <div className="min-h-[380px]">
+                            <div className="min-h-[380px] mt-50 mb-">
+                                {" "}
+                                {/* Añadí mt-10 y mb-10 para más espacio superior e inferior */}
                                 <Swiper
                                     spaceBetween={80}
                                     slidesPerView={4}
@@ -102,7 +105,6 @@ export default function AboutUs() {
                                         // 1280: { slidesPerView: 4 },
                                     }}
                                     grabCursor={true}
-                                    // className="pt-20 pb-5 bg-red-200"
                                     style={{ paddingTop: "70px", paddingBottom: "5px" }}
                                 >
                                     {teams.map((team) => (
@@ -112,27 +114,52 @@ export default function AboutUs() {
                                     ))}
                                 </Swiper>
                             </div>
-                            <Button to="/about-us" style="4" type="2" className="mx-auto">
+                            {/* Eliminado el botón de la sección de equipos */}
+                            {/* 
+                            <Button to="/about-us" style="4" type="2" className="mx-auto mt-12">
                                 <span>learn more about us</span> <span>&rarr;</span>
                             </Button>
+                            */}
+                            <div className="p-5 m-1"></div>
                         </div>
                     </div>
-                    {/* Commented SVG (optional) */}
-                    {/* <svg viewBox="0 0 1440 320" className="-translate-y-1">
-                        <path d="M0,224L60,197.3C120,171,240,117,360,101.3C480,85,600,107,720,101.3C840,96,960,64,1080,53.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
-                    </svg> */}
                 </div>
             </section>
 
             {/* Testimonials Section */}
-            <section className="relative px-[var(--padding)] pt-12">
-                <h2 className="text-4xl font-bold mb-8 text-center">TESTIMONIALS FROM SATISFIED CUSTOMERS</h2>
-                <GoogleItems classNameWrapper="relative z-20" />
-            </section>
+            <div className="relative bg-[#f8a61f] mt-25 sm:mt-35 w-full">
+                {/* Testimonials Section */}
+                <section className="relative px-[var(--padding)] pt-20 pb-20">
+                    <h2
+                        className="text-4xl font-bold mb-8 text-center"
+                        style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)" }}
+                    >
+                        WHAT OUR CUSTOMERS SAY ABOUT US
+                    </h2>
+                    <p
+                        className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-[var(--color2-txt)] mt-5"
+                        style={{ lineHeight: "1.8" }}
+                    >
+                        Discover the experiences of our satisfied clients and see why they choose
+                        us.
+                    </p>
+                    <GoogleItems classNameWrapper="relative z-20 mt-7" />
+                </section>
+            </div>
 
-            {/* SectionContact Component */}
-            <section className="px-[var(--padding)] mt-20">
-                <div className="container relative z-10">
+            {/* Sección de "Contact" */}
+            <section className="relative px-[--padding] mt-10 mb-10">
+                <h2 className="text-3xl sm:text-5xl text-center font-title text-black">
+                    {/* Añadí text-black para cambiar el color del texto a negro */}
+                    Contact Form
+                </h2>
+                <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-black mt-9">
+                    {/* Añadí text-black para cambiar el color del texto a negro */}
+                    Join countless homeowners who trust GA CASTRO CONSTRUCTION to transform homes
+                    with efficiency and expertise in roofing and siding.
+                </p>
+                <div className="relative z-10 container pt-20 sm:pt-30 lg:pt-50">
+                    {/* Aumenté pt-14 a pt-20, sm:pt-24 a sm:pt-30, y lg:pt-40 a lg:pt-50 para bajar la sección */}
                     <SectionContact />
                 </div>
             </section>
@@ -154,9 +181,9 @@ function Item({ title, icon }) {
 function ConcepsSection({ mision, vision, trustedServices }) {
     const [selected, setSelected] = useState(mision);
     return (
-        <div className="-translate-y-14 flex flex-col max-w-[900px] items-center rounded-3xl  p-10 pt-5 gap-5 sm:gap-14 bg-[--color1-bg] shadow-[0_3px_15px_2px_var(--color2-bg1)]">
+        <div className="-translate-y-14 flex flex-col max-w-[900px] items-center rounded-3xl p-10 pt-5 gap-5 sm:gap-14 bg-[--color1-bg] shadow-[0_3px_15px_2px_var(--color2-bg1)]">
             <p className="text-xl sm:text-3xl text-center">{selected}</p>
-            <div className="flex flex-col sm:flex-row sm:gap-10 lg:gap-32 ">
+            <div className="flex flex-col sm:flex-row sm:gap-10 lg:gap-32">
                 <button
                     onClick={() => setSelected(mision)}
                     className="flex flex-col items-center gap-2"

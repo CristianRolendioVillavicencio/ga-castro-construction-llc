@@ -76,9 +76,9 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
             <div className="relative group/card bg-white text-black font-content flex flex-col  pb-5 mt-10 hover:mt-0 items-center rounded-lg transition-all ">
                 <img
                     src={photo}
-                    className="absolute bg-[--color1-bg] -top-7 max-w-32 aspect-square -translate-y-10 rounded-md shadow-xl group-hover/card:max-w-36 transition-all duration-200"
+                    className="absolute bg-[--color1-bg] -top-1 max-w-50 aspect-square -translate-y-10 rounded-md shadow-xl group-hover/card:max-w-76 transition-all duration-200"
                 />
-                <div className="flex flex-col items-center pt-16 group-hover/card:pt-20 transition-all">
+                <div className="flex flex-col items-center pt-80 group-hover/card:pt-25 transition-all">
                     <h2 className="font-title2 text-2xl">{name}</h2>
                     <span className="text-lg opacity-80 -translate-y-1">{rol}</span>
                 </div>
@@ -88,17 +88,17 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                         <Item num={info.followers} text="Followers" />
                         <Item num={info.likes} text="Likes" />
                     </div>
-                    <div className="flex flex-row gap-5 mb-1">
+                    <div className="flex flex-row gap-5 mb-5 mt-4"> {/* Ajusté mb-1 a mb-5 para más espacio inferior */}
                         <Button
                             text="Follow"
-                            className="bg-[--color1-bg] text-white"
+                            className="bg-[--color1-bg] text-white p-9" // Agregué padding para más espacio interno
                             href={info.facebook_url}
                             target="_blank"
                             rel="noreferer"
                         />
                         <Button
                             text="Message"
-                            className="bg-white border-solid border border-gray-500"
+                            className="bg-white border-solid border border-gray-500 p-3" // Agregué padding para más espacio interno
                             href={info.facebook_url}
                             target="_blank"
                             rel="noreferer"

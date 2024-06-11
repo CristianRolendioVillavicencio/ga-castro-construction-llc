@@ -61,10 +61,10 @@ export default function Home({ info }) {
                             <h2 className="text-3xl sm:text-5xl text-center font-title">
                                 Our Team
                             </h2>
-                            <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-[var(--color2-txt)] mt-5">
+                            <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-[var(--color2-txt)] mt-3">
                                 We are a team of professionals who are passionate about what we do.
                             </p>
-                            <div className="min-h-[380px] mt-5">
+                            <div className="min-h-[380px] mt-1">
                                 <Swiper
                                     spaceBetween={80}
                                     slidesPerView={4}
@@ -90,7 +90,7 @@ export default function Home({ info }) {
                                     ))}
                                 </Swiper>
                             </div>
-                            <Button to="/about-us" style="4" type="2" className=" mx-auto">
+                            <Button to="/about-us" style="4" type="2" className="mx-auto mt-12"> {/* Agregué mt-10 para más espacio superior */}
                                 <span>learn more about us</span> <span>&rarr;</span>
                             </Button>
                         </div>
@@ -106,18 +106,30 @@ export default function Home({ info }) {
 
 
 
-
-                <section className="relative px-[var(--padding)]">
-                    
-                    <div className="relative z-10 container pt-14 sm:pt-24 lg:pt-40">
+                {/* Sección de "Contact" */}
+                <section className="relative px-[--padding] mt-10 mb-10">
+                    <h2 className="text-3xl sm:text-5xl text-center font-title text-black">
+                        {/* Añadí text-black para cambiar el color del texto a negro */}
+                        Contact Form
+                    </h2>
+                    <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-black mt-9">
+                        {/* Añadí text-black para cambiar el color del texto a negro */}
+                        Join countless homeowners who trust GA CASTRO CONSTRUCTION  to transform homes with efficiency and expertise in roofing and siding.
+                    </p>
+                    <div className="relative z-10 container pt-20 sm:pt-30 lg:pt-50">
+                        {/* Aumenté pt-14 a pt-20, sm:pt-24 a sm:pt-30, y lg:pt-40 a lg:pt-50 para bajar la sección */}
                         <SectionContact />
                     </div>
                 </section>
-                <section className="px-[--padding]">
+
+                {/* Sección de Brands */}
+                <section className="px-[--padding] mt-10 mb-5"> {/* Añadí mt-20 y mb-20 para más espacio superior e inferior */}
                     <div className="container flex items-center justify-center">
                         <Brands />
                     </div>
                 </section>
+
+
             </AnimatedElement>
         </>
     );
