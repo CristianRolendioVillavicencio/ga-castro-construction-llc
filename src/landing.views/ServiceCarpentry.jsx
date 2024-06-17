@@ -8,7 +8,7 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 export default function ServiceCarpentry() {
     return (
         <AnimatedElement>
-            <section className="relative overflow-hidden">
+            <section className="relative overflow-hidden" style={{ marginTop: "90px" }}>
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/image/carpentry-1.jpg" className="w-full h-full object-cover" />
                 </div>

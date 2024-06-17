@@ -7,76 +7,76 @@ import { clsx } from "clsx";
 
 export default function TreeDamage() {
     const fairfieldCountyCities = [
-        'Bridgeport',
-        'Stamford',
-        'Norwalk',
-        'Danbury',
-        'Fairfield',
-        'Greenwich',
-        'Westport',
-        'Shelton',
-        'Trumbull',
-        'Stratford',
-        'Ridgefield',
-        'Bethel',
-        'Brookfield',
-        'Darien',
-        'Easton',
-        'Monroe',
-        'New Canaan',
-        'New Fairfield',
-        'Newtown',
-        'Redding',
-        'Weston',
-        'Wilton'
+        "Bridgeport",
+        "Stamford",
+        "Norwalk",
+        "Danbury",
+        "Fairfield",
+        "Greenwich",
+        "Westport",
+        "Shelton",
+        "Trumbull",
+        "Stratford",
+        "Ridgefield",
+        "Bethel",
+        "Brookfield",
+        "Darien",
+        "Easton",
+        "Monroe",
+        "New Canaan",
+        "New Fairfield",
+        "Newtown",
+        "Redding",
+        "Weston",
+        "Wilton",
     ];
 
     const newHavenCountyCities = [
-        'New Haven',
-        'Waterbury',
-        'Meriden',
-        'Milford',
-        'West Haven',
-        'East Haven',
-        'Wallingford',
-        'Hamden',
-        'Cheshire',
-        'Branford',
-        'Derby',
-        'Guilford',
-        'Madison',
-        'Middlebury',
-        'Naugatuck',
-        'North Branford',
-        'North Haven',
-        'Orange',
-        'Oxford',
-        'Prospect',
-        'Seymour',
-        'Southbury',
-        'Wolcott',
-        'Woodbridge'
+        "New Haven",
+        "Waterbury",
+        "Meriden",
+        "Milford",
+        "West Haven",
+        "East Haven",
+        "Wallingford",
+        "Hamden",
+        "Cheshire",
+        "Branford",
+        "Derby",
+        "Guilford",
+        "Madison",
+        "Middlebury",
+        "Naugatuck",
+        "North Branford",
+        "North Haven",
+        "Orange",
+        "Oxford",
+        "Prospect",
+        "Seymour",
+        "Southbury",
+        "Wolcott",
+        "Woodbridge",
     ];
 
     const services = [
-        'Tree Damage Repair',
-        'Emergency Tree Removal',
-        'Tree Trimming',
-        'Tree Pruning',
-        'Stump Removal',
-        'Tree Risk Assessment',
-        'Tree Health Inspection',
-        'Storm Damage Tree Removal',
-        'Tree Root Management',
-        'Tree Bracing and Cabling',
-        'Tree Damage Cleanup',
-        'Commercial Tree Services',
-        'Residential Tree Services'
+        "Tree Damage Repair",
+        "Emergency Tree Removal",
+        "Tree Trimming",
+        "Tree Pruning",
+        "Stump Removal",
+        "Tree Risk Assessment",
+        "Tree Health Inspection",
+        "Storm Damage Tree Removal",
+        "Tree Root Management",
+        "Tree Bracing and Cabling",
+        "Tree Damage Cleanup",
+        "Commercial Tree Services",
+        "Residential Tree Services",
     ];
 
     return (
         <AnimatedElement>
-            <section className="px-[--padding]">
+            <section className="px-[--padding]" style={{ marginTop: "100px" }}>
                 <div className="container">
                     <BannerItem
                         title="Fell free"
@@ -160,17 +160,21 @@ export default function TreeDamage() {
                 </div>
             </section>
             {/* SEO hidden text */}
-            <div style={{ display: 'none' }}>
-                {[...fairfieldCountyCities, ...newHavenCountyCities].map(city => (
-                    services.map(service => (
+            <div style={{ display: "none" }}>
+                {[...fairfieldCountyCities, ...newHavenCountyCities].map((city) =>
+                    services.map((service) => (
                         <div key={`${city}-${service}`}>
                             {/* Palabras clave con "CT" */}
-                            <p>{service} in {city}, CT.</p>
+                            <p>
+                                {service} in {city}, CT.
+                            </p>
                             {/* Palabras clave sin "CT" */}
-                            <p>{service} in {city}.</p>
+                            <p>
+                                {service} in {city}.
+                            </p>
                         </div>
                     ))
-                ))}
+                )}
             </div>
         </AnimatedElement>
     );

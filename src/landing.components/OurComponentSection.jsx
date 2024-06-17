@@ -18,7 +18,7 @@ export default function OurComponentSection() {
                     className="mb-24 mt-44 text-5xl text-center font-title font'bold text-[--color1-txt1]"
                     style={{ textShadow: "0 2px 5px #000" }}
                 >
-                    Our Services
+                    OUR SERVICES
                 </h2>
                 <OurServices />
             </div>

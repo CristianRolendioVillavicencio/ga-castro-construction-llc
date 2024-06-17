@@ -84,7 +84,7 @@ export default function ServiceGutter() {
 
     return (
         <AnimatedElement>
-            <section>
+            <section style={{ marginTop: '100px' }}>
                 <div className="container">
                     <BannerItem
                         title="Top-Rated Gutter Cleaning"

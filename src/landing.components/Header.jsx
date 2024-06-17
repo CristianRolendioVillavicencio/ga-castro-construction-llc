@@ -1,9 +1,184 @@
-import { faAngleDown, faAngleUp, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleUp, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+import tinycolor from "tinycolor2";
 import FormConsult from "./Formconsult";
 import { clsx } from "clsx";
+
+// Styled components
+
+// Top header component with styles
+const TopHeader = styled.div`
+    background-color: #dc2626;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    transition: transform 0.3s ease-in-out;
+    transform: ${(props) => (props.isVisible ? "translateY(0)" : "translateY(-100%)")};
+    display: none;
+`;
+
+// Main header component with styles
+const MainHeader = styled.div`
+    position: fixed;
+    top: ${(props) => (props.isTopHeaderVisible ? "1rem" : "0.5rem")};
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 49;
+    width: 90%;
+    max-width: 1400px;
+    padding: 2.25rem 1rem;
+    height: 3rem;
+    background: ${(props) => (props.isTop ? "transparent" : "#000000")};
+    color: ${(props) => (props.isTop ? props.textColor : "white")};
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s, color 0.3s, top 0.3s, height 0.3s;
+`;
+
+// Logo wrapper component with styles
+const LogoWrapper = styled(Link)`
+    display: flex;
+    align-items: center;
+`;
+
+// Logo image component with styles
+const Logo = styled.img`
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+
+    @media (min-width: 768px) {
+        width: 6rem;
+        height: 6rem;
+    }
+`;
+
+// Navigation link component with styles
+const NavLink = styled(Link)`
+    padding: 0.4rem 0.8rem;
+
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+    transition: all 0.2s;
+    color: ${(props) => (props.isTop ? props.textColor : "white")};
+    text-shadow: ${(props) => (props.isTop ? "1px 1px 2px black" : "none")};
+    ${(props) =>
+        props.active
+            ? `
+        color: #f8a61f;
+        background-color: #3a3a3a;
+        border-radius: 1.5rem;
+      `
+            : `
+        &:hover {
+          color: #f8a61f;
+        }
+      `}
+`;
+
+// Mobile menu component with styles
+const MobileMenu = styled.div`
+    display: ${(props) => (props.isOpen ? "flex" : "none")};
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1f2937;
+    padding: 1rem;
+    color: #faa819;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+`;
+
+// Free estimate button component with styles
+const FreeEstimateButton = styled.button`
+    padding: 0.5rem 1rem; // Ajustado el padding para un botón más pequeño
+    background-color: #dc2626;
+    color: white;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    &:hover {
+        background-color: #dc8500;
+        transform: scale(1.05);
+    }
+    @media (max-width: 767px) {
+        width: auto; // No ocupar todo el ancho en móviles
+        text-align: center;
+        margin: 0.5rem auto; // Centrar el botón en móviles
+    }
+`;
+
+// Submenu container component with styles
+const SubMenuContainer = styled.div`
+    position: relative;
+`;
+
+// Submenu component with styles
+const SubMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #3a3a3a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1rem;
+    width: 400px;
+    z-index: 48;
+    padding: 1rem;
+    visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
+    opacity: ${(props) => (props.isVisible ? "1" : "0")};
+    transition: visibility 0.3s, opacity 0.3s;
+    border-radius: 1rem;
+`;
+
+// Submenu column component with styles
+const SubMenuColumn = styled.div`
+    flex: 1;
+    padding: 0 1rem;
+`;
+
+// Submenu title component with styles
+const SubMenuTitle = styled.div`
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: white;
+`;
+
+// Submenu link component with styles
+const SubMenuLink = styled(Link)`
+    padding: 0.25rem 0;
+    color: #f8f8f8;
+    text-transform: capitalize;
+    display: block;
+    font-family: "Arial", sans-serif;
+    font-weight: 300;
+    &:hover {
+        color: #f8a61f;
+    }
+`;
 
 export default function Header({
     withSliderIn = [],
@@ -13,96 +188,223 @@ export default function Header({
     const closeElement = useRef(null);
     const { pathname } = useLocation();
     const isSliderIn = withSliderIn.find((path) => path.includes(pathname)) ? true : false;
-    // console.log(pathname);
 
-    const [isOpen, setIsOpen] = useState(false);
-    // const [isTop, setIsTop] = useState(true);
-    // useEffect(() => {
-    //     window.onscroll = (e) => {
-    //         if (e.target.scrollingElement.scrollTop > 0) setIsTop(false);
-    //         else setIsTop(true);
-    //     };
-    // }, []);
+    const [isOpen, setIsOpen] = useState(false); // State for mobile menu
+    const [isTopHeaderVisible, setIsTopHeaderVisible] = useState(true); // State for top header visibility
+    const [activeSubMenu, setActiveSubMenu] = useState(null); // State for active submenu
+    const [isTop, setIsTop] = useState(true); // State for tracking if the header is at the top
+    const [textColor, setTextColor] = useState("white"); // State for the text color
+
+    const handleScroll = () => {
+        if (window.scrollY === 0) {
+            setIsTopHeaderVisible(true); // Show top header when at the top
+            setIsTop(true); // Set header to top state
+        } else {
+            setIsTopHeaderVisible(false); // Hide top header when scrolling down
+            setIsTop(false); // Unset header from top state
+        }
+    };
+
+    useEffect(() => {
+        const determineTextColor = () => {
+            const backgroundColor = window.getComputedStyle(document.body).backgroundColor;
+            const color = tinycolor(backgroundColor);
+            const brightness = color.getBrightness();
+            setTextColor(brightness > 125 ? "black" : "white");
+        };
+        determineTextColor();
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const toggleSubMenu = (menu) => {
+        setActiveSubMenu(activeSubMenu === menu ? null : menu); // Toggle submenu visibility
+    };
+
     if (closeElement.current) {
-        closeElement.current.addEventListener("click", () => setIsOpen(false));
+        closeElement.current.addEventListener("click", () => setIsOpen(false)); // Close mobile menu
     }
-    // window.onKeyDown = (e) => (e.key == "Escape" ? setIsOpen(false) : null);
+
     return (
         <>
-            <div
-                className={clsx("top-0 z-50 pt-3 w-full px-[var(--padding)] ", {
-                    fixed: isSliderIn,
-                    sticky: !isSliderIn,
-                })}
-            >
-                <div className="container flex justify-between items-center gap-1 sm:gap-5">
-                    <Link to="/" className="h-full">
-                        <img
-                            src="/img/logo.png"
-                            alt="Logo de GA Castro Constructions LLC"
-                            className="w-full h-full object-contain"
-                        />
-                    </Link>
-                    <div
-                        ref={closeElement}
-                        className={clsx(
-                            `
-                            fixed left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-full h-screen rounded-none flex-col bg-[#050504]/90 backdrop-blur-sm
-                            flex gap-4 xl:gap-0 justify-center items-center  xl:py-3
-                            xl:px-5 xl:static xl:w-auto xl:h-auto xl:flex-row xl:rounded-full xl:overflow-visible xl:left-0 xl:top-0 xl:translate-y-0 xl:translate-x-0 xl:max-h-none xl:backdrop-blur-0 xl:bg-[#050504] 
-                            transition-all duration-200 overflow-hidden
-                        `,
-                            {
-                                "max-h-screen": isOpen,
-                                "max-h-0": !isOpen,
-                            }
-                        )}
+            <TopHeader isVisible={isTopHeaderVisible}>
+                <span>
+                    Sign up for 20% off your first order. <Link to="/subscribe">Subscribe.</Link>
+                </span>
+            </TopHeader>
+
+            <MainHeader isTopHeaderVisible={isTopHeaderVisible} isTop={isTop} textColor={textColor}>
+                <LogoWrapper to="/">
+                    <Logo src="/img/logo.png" alt="Logo" />
+                </LogoWrapper>
+
+                <div className="hidden lg:flex items-center space-x-4">
+                    <Option name="Home" to="/" isTop={isTop} textColor={textColor} />
+                    <SubMenuContainer
+                        onMouseEnter={() => toggleSubMenu("services")}
+                        onMouseLeave={() => toggleSubMenu(null)}
                     >
-                        <Option name="Home" to="/" />
-                        <Option name="Services" to="/services">
-                            <Option name="Roofing" to="/services/roofing" />
-                            <Option name="Siding" to="/services/siding" />
-                            <Option name="Gutter" to="/services/gutter" />
-                            <Option name="Carpentry" to="/services/carpentry" />
-                            <Option name="Painting" to="/services/paint" />    
-                        </Option>
-                        <Option name="Restoration" to="/restoration">
-                            <Option name="Wind Damage" to="/restoration/wind-damage" />
-                            <Option name="Water Damage" to="/restoration/water-damage" />
-                            <Option name="Tree Damage" to="/restoration/tree-damage" />
-                        </Option>
-                        <Option name="Financing" to="/financing" />
-                        <Option name="Gallery" to="/gallery" />
-                        <Option name="Areas" to="/work-areas" />
-                        <Option name="Help" to="#">
-                            <Option name="About Us" to="/about-us" />
-                            <Option name="Contact Us" to="/contact-us" />
-                            <Option name="Work With Us" to="/work-with-us" />
-                            <Option name="Faq" to="/faq" />
-                        </Option>
-                        <Option name="Roof Designer" to="/roof-designer" />
-                    </div>
-                    <div className="flex justify-center items-center">
-                        <button
-                            onClick={() => setIsVisibleModalFormConsult(true)}
-                            className="flex justify-center items-center px-4 py-2 md:py-3 rounded-full font-title2 bg-[#f8a61f] text-white md:text-xl text-nowrap text-ellipsis"
-                        >
-                            Free Estimates
-                        </button>
-                    </div>
-                    <div className="flex xl:hidden justify-center items-center">
-                        <button
-                            className=" flex justify-center items-center h-10 p-1 cursor-pointer bg-black/50 aspect-square rounded-lg"
-                            onClick={() => setIsOpen(!isOpen)}
-                        >
-                            <FontAwesomeIcon
-                                icon={faBars}
-                                className="relative z-10 text-white text-lg"
-                            />
-                        </button>
-                    </div>
+                        <NavLink to="#" isTop={isTop} textColor={textColor}>
+                            Services
+                        </NavLink>
+                        <SubMenu isVisible={activeSubMenu === "services"}>
+                            <SubMenuColumn>
+                                <SubMenuTitle>Home Improvement</SubMenuTitle>
+                                <SubMenuLink to="/services/roofing">Roofing</SubMenuLink>
+                                <SubMenuLink to="/services/siding">Siding</SubMenuLink>
+                                <SubMenuLink to="/services/gutter">Gutter</SubMenuLink>
+                                <SubMenuLink to="/services/carpentry">Carpentry</SubMenuLink>
+                                <SubMenuLink to="/services/paint">Painting</SubMenuLink>
+                            </SubMenuColumn>
+                            <SubMenuColumn>
+                                <SubMenuTitle>Restoration</SubMenuTitle>
+                                <SubMenuLink to="/restoration/wind-damage">Wind Damage</SubMenuLink>
+                                <SubMenuLink to="/restoration/water-damage">
+                                    Water Damage
+                                </SubMenuLink>
+                                <SubMenuLink to="/restoration/tree-damage">Tree Damage</SubMenuLink>
+                            </SubMenuColumn>
+                        </SubMenu>
+                    </SubMenuContainer>
+                    <Option name="Financing" to="/financing" isTop={isTop} textColor={textColor} />
+                    <Option name="Gallery" to="/gallery" isTop={isTop} textColor={textColor} />
+                    <Option name="Areas" to="/work-areas" isTop={isTop} textColor={textColor} />
+                    <SubMenuContainer
+                        onMouseEnter={() => toggleSubMenu("help")}
+                        onMouseLeave={() => toggleSubMenu(null)}
+                    >
+                        <NavLink to="#" isTop={isTop} textColor={textColor}>
+                            Help
+                        </NavLink>
+                        <SubMenu isVisible={activeSubMenu === "help"}>
+                            <SubMenuColumn>
+                                <SubMenuTitle>Help</SubMenuTitle>
+                                <SubMenuLink to="/about-us">About Us</SubMenuLink>
+                                <SubMenuLink to="/contact-us">Contact Us</SubMenuLink>
+                                <SubMenuLink to="/work-with-us">Work With Us</SubMenuLink>
+                                <SubMenuLink to="/faq">Faq</SubMenuLink>
+                            </SubMenuColumn>
+                        </SubMenu>
+                    </SubMenuContainer>
+                    <Option
+                        name="Roof Designer"
+                        to="/roof-designer"
+                        isTop={isTop}
+                        textColor={textColor}
+                    />
                 </div>
-            </div>
+
+                <FreeEstimateButton onClick={() => setIsVisibleModalFormConsult(true)}>
+                    Free Estimates
+                </FreeEstimateButton>
+
+                <div className="lg:hidden flex items-center">
+                    <button onClick={() => setIsOpen(!isOpen)}>
+                        <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
+                    </button>
+                </div>
+            </MainHeader>
+
+            <MobileMenu isOpen={isOpen}>
+                <button
+                    onClick={() => setIsOpen(false)}
+                    className="self-end text-white text-3xl mb-4"
+                >
+                    <FontAwesomeIcon icon={faTimes} />
+                </button>
+                <Option name="Home" to="/" onClick={() => setIsOpen(false)} />
+                <SubMenuContainer>
+                    <NavLink
+                        to="#"
+                        onClick={() => toggleSubMenu("services")}
+                        isTop={isTop}
+                        textColor={textColor}
+                    >
+                        Services{" "}
+                        <FontAwesomeIcon
+                            icon={activeSubMenu === "services" ? faAngleUp : faAngleDown}
+                        />
+                    </NavLink>
+                    <SubMenu isVisible={activeSubMenu === "services"}>
+                        <SubMenuColumn>
+                            <SubMenuTitle>Home Improvement</SubMenuTitle>
+                            <SubMenuLink to="/services/roofing" onClick={() => setIsOpen(false)}>
+                                Roofing
+                            </SubMenuLink>
+                            <SubMenuLink to="/services/siding" onClick={() => setIsOpen(false)}>
+                                Siding
+                            </SubMenuLink>
+                            <SubMenuLink to="/services/gutter" onClick={() => setIsOpen(false)}>
+                                Gutter
+                            </SubMenuLink>
+                            <SubMenuLink to="/services/carpentry" onClick={() => setIsOpen(false)}>
+                                Carpentry
+                            </SubMenuLink>
+                            <SubMenuLink to="/services/paint" onClick={() => setIsOpen(false)}>
+                                Painting
+                            </SubMenuLink>
+                        </SubMenuColumn>
+                        <SubMenuColumn>
+                            <SubMenuTitle>Restoration</SubMenuTitle>
+                            <SubMenuLink
+                                to="/restoration/wind-damage"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Wind Damage
+                            </SubMenuLink>
+                            <SubMenuLink
+                                to="/restoration/water-damage"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Water Damage
+                            </SubMenuLink>
+                            <SubMenuLink
+                                to="/restoration/tree-damage"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Tree Damage
+                            </SubMenuLink>
+                        </SubMenuColumn>
+                    </SubMenu>
+                </SubMenuContainer>
+                <Option name="Financing" to="/financing" onClick={() => setIsOpen(false)} />
+                <Option name="Gallery" to="/gallery" onClick={() => setIsOpen(false)} />
+                <Option name="Areas" to="/work-areas" onClick={() => setIsOpen(false)} />
+                <SubMenuContainer>
+                    <NavLink
+                        to="#"
+                        onClick={() => toggleSubMenu("help")}
+                        isTop={isTop}
+                        textColor={textColor}
+                    >
+                        Help{" "}
+                        <FontAwesomeIcon
+                            icon={activeSubMenu === "help" ? faAngleUp : faAngleDown}
+                        />
+                    </NavLink>
+                    <SubMenu isVisible={activeSubMenu === "help"}>
+                        <SubMenuColumn>
+                            <SubMenuTitle>Help</SubMenuTitle>
+                            <SubMenuLink to="/about-us" onClick={() => setIsOpen(false)}>
+                                About Us
+                            </SubMenuLink>
+                            <SubMenuLink to="/contact-us" onClick={() => setIsOpen(false)}>
+                                Contact Us
+                            </SubMenuLink>
+                            <SubMenuLink to="/work-with-us" onClick={() => setIsOpen(false)}>
+                                Work With Us
+                            </SubMenuLink>
+                            <SubMenuLink to="/faq" onClick={() => setIsOpen(false)}>
+                                Faq
+                            </SubMenuLink>
+                        </SubMenuColumn>
+                    </SubMenu>
+                </SubMenuContainer>
+                <Option name="Roof Designer" to="/roof-designer" onClick={() => setIsOpen(false)} />
+            </MobileMenu>
+
             <ModalFormConsult
                 isVisible={isVisibleModalFormConsult}
                 onClose={() => setIsVisibleModalFormConsult(false)}
@@ -111,49 +413,30 @@ export default function Header({
     );
 }
 
-function Option({ children, name, to, ...props }) {
+function Option({ children, name, to, isTop, textColor, onClick, ...props }) {
     const { pathname } = useLocation();
-    const isLocation = pathname == to ? true : false;
+    const isLocation = pathname === to;
 
     return (
-        <div
-            className={`
-                relative xl:flex
-                xl:flex-row xl:h-full 
-                group items-center font-title2 text-white
-            `}
-            {...props}
-        >
-            <Link
+        <div className="relative group flex items-center">
+            <NavLink
                 to={to}
-                className={`flex gap-1 text-md transition-all px-2 rounded-full duration-200 hover:opacity-100 text-nowrap uppercase justify-center items-center ${
-                    isLocation ? "opacity-100 bg-[#f8a61f]" : "opacity-90"
-                }`}
+                active={isLocation}
+                isTop={isTop}
+                textColor={textColor}
+                onClick={onClick}
+                {...props}
             >
                 {name}
                 {children && (
-                    <div className={`relative w-[0.7rem] hidden xl:block`}>
-                        <FontAwesomeIcon
-                            icon={faAngleDown}
-                            className="w-full h-full opacity-100 group-hover:opacity-0 transition-opacity duration-300"
-                        />
-                        <FontAwesomeIcon
-                            icon={faAngleUp}
-                            className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        />
-                    </div>
+                    <FontAwesomeIcon icon={faAngleDown} className="ml-1 group-hover:hidden" />
                 )}
-            </Link>
+                {children && (
+                    <FontAwesomeIcon icon={faAngleUp} className="ml-1 hidden group-hover:block" />
+                )}
+            </NavLink>
             {children && (
-                <div
-                    className={`
-                        xl:absolute xl:top-[calc(100%+15px)] xl:left-[50%] xl:translate-x-[-50%] xl:bg-[#050504] xl:text-[var(--color2-txt1)]  xl:p-0 xl:rounded-3xl xl:shadow-lg xl:max-h-0 xl:overflow-hidden xl:opacity-0
-                        xl:transition-all xl:group-hover:max-h-[300px] xl:group-hover:opacity-100 xl:duration-500 xl:group-hover:p-4
-                        xl:mt-0 xl:gap-2
-                        transition-none
-                        justify-center items-center flex flex-col gap-3 mt-2 
-                    `}
-                >
+                <div className="absolute top-full left-0 mt-2 w-40 bg-white shadow-lg rounded-md hidden group-hover:block">
                     {children}
                 </div>
             )}
@@ -170,7 +453,7 @@ function ModalFormConsult({ isVisible = false, onClose = null }) {
     }
     window.onkeydown = (e) => (e.key === "Escape" ? onClose() : null);
     return (
-        <div className={"fixed inset-0 z-50 px-[--padding] " + (isVisible ? "flex" : "hidden")}>
+        <div className={"fixed inset-0 z-50 " + (isVisible ? "flex" : "hidden")}>
             <div
                 ref={_window}
                 className="fixed inset-0 bg-black/20 backdrop-blur-md cursor-pointer"
@@ -179,17 +462,11 @@ function ModalFormConsult({ isVisible = false, onClose = null }) {
                 className="fixed top-3 right-3 z-20 w-10 aspect-square rounded-full bg-white/50"
                 onClick={onClose}
             >
-                <FontAwesomeIcon icon={faTimes} className=" text-black" />
+                <FontAwesomeIcon icon={faTimes} className="text-black" />
             </button>
             <div className="z-10 m-auto flex flex-col justify-center items-center">
                 <FormConsult className="h-screen max-h-[800px] overflow-y-auto" />
-                <p
-                    className="text-center text-black text-lg font-title font-bold"
-                    style={{
-                        textShadow:
-                            "1px 0 0 rgba(255, 255, 255, 0.5), -1px 0 0 rgba(255, 255, 255, 0.5), 0 1px 0 rgba(255, 255, 255, 0.5), 0 -1px 0 rgba(255, 255, 255, 0.5)",
-                    }}
-                >
+                <p className="text-center text-black text-lg font-bold">
                     Press <b>ESC</b> or <b>click outside</b> the image to close
                 </p>
             </div>

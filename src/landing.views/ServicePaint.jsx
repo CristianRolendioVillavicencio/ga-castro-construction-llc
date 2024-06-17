@@ -5,85 +5,85 @@ import SectionContact from "../landing.components/SectionContact";
 export default function ServicePaint() {
     // Lista de ciudades en Fairfield County
     const fairfieldCountyCities = [
-        'Bridgeport',
-        'Stamford',
-        'Norwalk',
-        'Danbury',
-        'Fairfield',
-        'Greenwich',
-        'Westport',
-        'Shelton',
-        'Trumbull',
-        'Stratford',
-        'Ridgefield',
-        'Bethel',
-        'Brookfield',
-        'Darien',
-        'Easton',
-        'Monroe',
-        'New Canaan',
-        'New Fairfield',
-        'Newtown',
-        'Redding',
-        'Weston',
-        'Wilton'
+        "Bridgeport",
+        "Stamford",
+        "Norwalk",
+        "Danbury",
+        "Fairfield",
+        "Greenwich",
+        "Westport",
+        "Shelton",
+        "Trumbull",
+        "Stratford",
+        "Ridgefield",
+        "Bethel",
+        "Brookfield",
+        "Darien",
+        "Easton",
+        "Monroe",
+        "New Canaan",
+        "New Fairfield",
+        "Newtown",
+        "Redding",
+        "Weston",
+        "Wilton",
     ];
 
     // Lista de ciudades en New Haven County
     const newHavenCountyCities = [
-        'New Haven',
-        'Waterbury',
-        'Meriden',
-        'Milford',
-        'West Haven',
-        'East Haven',
-        'Wallingford',
-        'Hamden',
-        'Cheshire',
-        'Branford',
-        'Derby',
-        'Guilford',
-        'Madison',
-        'Middlebury',
-        'Naugatuck',
-        'North Branford',
-        'North Haven',
-        'Orange',
-        'Oxford',
-        'Prospect',
-        'Seymour',
-        'Southbury',
-        'Wolcott',
-        'Woodbridge'
+        "New Haven",
+        "Waterbury",
+        "Meriden",
+        "Milford",
+        "West Haven",
+        "East Haven",
+        "Wallingford",
+        "Hamden",
+        "Cheshire",
+        "Branford",
+        "Derby",
+        "Guilford",
+        "Madison",
+        "Middlebury",
+        "Naugatuck",
+        "North Branford",
+        "North Haven",
+        "Orange",
+        "Oxford",
+        "Prospect",
+        "Seymour",
+        "Southbury",
+        "Wolcott",
+        "Woodbridge",
     ];
 
     // Lista de servicios de pintura
     const services = [
-        'Painting',
-        'Interior Painting',
-        'Exterior Painting',
-        'Residential Painting',
-        'Commercial Painting',
-        'House Painting',
-        'Wall Painting',
-        'Room Painting',
-        'Ceiling Painting',
-        'Trim Painting',
-        'Cabinet Painting',
-        'Deck Painting',
-        'Fence Painting',
-        'Garage Painting',
-        'Painting Contractors',
-        'Painting Services',
-        'Custom Painting',
-        'Professional Painting',
-        'Eco-Friendly Painting',
-        'Painting Maintenance'
+        "Painting",
+        "Interior Painting",
+        "Exterior Painting",
+        "Residential Painting",
+        "Commercial Painting",
+        "House Painting",
+        "Wall Painting",
+        "Room Painting",
+        "Ceiling Painting",
+        "Trim Painting",
+        "Cabinet Painting",
+        "Deck Painting",
+        "Fence Painting",
+        "Garage Painting",
+        "Painting Contractors",
+        "Painting Services",
+        "Custom Painting",
+        "Professional Painting",
+        "Eco-Friendly Painting",
+        "Painting Maintenance",
     ];
 
     return (
         <AnimatedElement>
-            <section>
+            <section style={{ marginTop: "70px" }}>
                 <div className="container">
                     <BannerItem
                         title="Expert Painting"
@@ -93,20 +93,24 @@ export default function ServicePaint() {
                         imgText="Selection of paint to suit the client."
                     />
                     {/* Texto oculto para SEO */}
-                    <div style={{ display: 'none' }}>
+                    <div style={{ display: "none" }}>
                         {/* Iterar sobre cada ciudad en Fairfield y New Haven County */}
-                        {[...fairfieldCountyCities, ...newHavenCountyCities].map(city => (
+                        {[...fairfieldCountyCities, ...newHavenCountyCities].map((city) =>
                             /* Iterar sobre cada servicio de pintura */
-                            services.map(service => (
+                            services.map((service) => (
                                 /* Usar un div para cada combinación de ciudad y servicio */
                                 <div key={`${city}-${service}`}>
                                     {/* Palabras clave con "CT" */}
-                                    <p>{service} in {city}, CT.</p>
+                                    <p>
+                                        {service} in {city}, CT.
+                                    </p>
                                     {/* Palabras clave sin "CT" */}
-                                    <p>{service} in {city}.</p>
+                                    <p>
+                                        {service} in {city}.
+                                    </p>
                                 </div>
                             ))
-                        ))}
+                        )}
                     </div>
                 </div>
             </section>
