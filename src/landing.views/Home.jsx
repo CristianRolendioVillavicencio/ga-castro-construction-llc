@@ -36,23 +36,24 @@ export default function Home({ info }) {
                 <div className="relative bg-[#f8a61f] mt-5 sm:mt-35 w-full">
                     {/* Testimonials Section */}
                     <section className="relative px-[var(--padding)] pt-20 pb-20">
-                        <h2 className="text-4xl font-bold mb-8 text-center" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' }}>
-                        WHAT OUR CUSTOMERS SAY ABOUT US 
-
+                        <h2
+                            className="text-4xl font-bold mb-8 text-center"
+                            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)" }}
+                        >
+                            WHAT OUR CUSTOMERS SAY ABOUT US
                         </h2>
-                        <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-[var(--color2-txt)] mt-5" style={{ lineHeight: '1.8' }}>
-                        Discover the experiences of our satisfied clients and see why they choose us.
-
+                        <p
+                            className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-[var(--color2-txt)] mt-5"
+                            style={{ lineHeight: "1.8" }}
+                        >
+                            Discover the experiences of our satisfied clients and see why they
+                            choose us.
                         </p>
-                        
+
                         <GoogleItems classNameWrapper="relative z-20 mt-10" />
                     </section>
                 </div>
 
-
-
-
-                                
                 {/* Our team Section - start */}
 
                 <div className="flex flex-col  fill-[var(--color2-bg)] text-[var(--color2-txt1)]">
@@ -90,21 +91,15 @@ export default function Home({ info }) {
                                     ))}
                                 </Swiper>
                             </div>
-                            <Button to="/about-us" style="4" type="2" className="mx-auto mt-12"> {/* Agregué mt-10 para más espacio superior */}
+                            <Button to="/about-us" style="4" type="2" className="mx-auto mt-12">
+                                {" "}
+                                {/* Agregué mt-10 para más espacio superior */}
                                 <span>learn more about us</span> <span>&rarr;</span>
                             </Button>
                         </div>
                     </div>
                 </div>
                 {/* Our team Section - Finish */}
-
-
-
-
-
-
-
-
 
                 {/* Sección de "Contact" */}
                 <section className="relative px-[--padding] mt-10 mb-10">
@@ -114,7 +109,8 @@ export default function Home({ info }) {
                     </h2>
                     <p className="text-center sm:text-2xl font-content opacity-90 tracking-wide text-black mt-9">
                         {/* Añadí text-black para cambiar el color del texto a negro */}
-                        Join countless homeowners who trust GA CASTRO CONSTRUCTION  to transform homes with efficiency and expertise in roofing and siding.
+                        Join countless homeowners who trust GA CASTRO CONSTRUCTION to transform
+                        homes with efficiency and expertise in roofing and siding.
                     </p>
                     <div className="relative z-10 container pt-20 sm:pt-30 lg:pt-50">
                         {/* Aumenté pt-14 a pt-20, sm:pt-24 a sm:pt-30, y lg:pt-40 a lg:pt-50 para bajar la sección */}
@@ -123,13 +119,13 @@ export default function Home({ info }) {
                 </section>
 
                 {/* Sección de Brands */}
-                <section className="px-[--padding] mt-10 mb-5"> {/* Añadí mt-20 y mb-20 para más espacio superior e inferior */}
+                <section className="px-[--padding] mt-10 mb-5">
+                    {" "}
+                    {/* Añadí mt-20 y mb-20 para más espacio superior e inferior */}
                     <div className="container flex items-center justify-center">
                         <Brands />
                     </div>
                 </section>
-
-
             </AnimatedElement>
         </>
     );

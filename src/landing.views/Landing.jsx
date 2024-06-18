@@ -1,12 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AnimatedElement from "../components/AnimatedElement";
 import { faStar, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-
-// import { Autoplay, Navigation } from "swiper/modules";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/navigation";
-
 import { cls } from "../../lib/utils";
 import { useState } from "react";
 import useExternalScripts from "../hooks/useExternalScripts";
@@ -92,68 +86,9 @@ export default function Landing() {
                 </div>
             </section>
 
-            {/* <section className="relative overflow-hidden" id="section-instant-quote">
-                <div className="absolute inset-0 w-full h-full ">
-                    <img src="/img/23.jpg" className="w-full h-full object-cover" />
-                </div>
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background: `linear-gradient(180deg, 
-                                white 0%, rgba(255,255,255,0.8) 20%, 
-                                rgba(255,255,255,0.7) 40%, 
-                                rgba(255,255,255,0.6) 60%,
-                                white 95%
-                            
-                        )`,
-                    }}
-                />
-
-                <div className="container relative z-10 flex flex-col md:flex-row p-[--padding]">
-                    <div className="flex w-full items-center justify-center">
-                        <img src="/img/24.png" alt="" />
-                    </div>
-
-                    <div className="w-full h-full" id="roof-quote-pro-embedded" />
-                </div>
-            </section> */}
-
             <section className="relative overflow-hidden" id="section-instant-quote">
                 <div className="w-full h-full" id="roof-quote-pro-embedded" />
             </section>
-
-            {/* <section className="relative">
-                <div
-                    className="absolute z-10 top-0 left-0 w-full h-48"
-                    style={{
-                        background: `linear-gradient(180deg, 
-                            white 0%, 
-                            white 10%,
-                            transparent
-                        )`,
-                    }}
-                />
-                <Swiper
-                    slidesPerView={1}
-                    modules={[Autoplay, Navigation]}
-                    navigation={true}
-                    autoplay={{ delay: 5000 }}
-                    speed={1500}
-                    loop={true}
-                    grabCursor={true}
-                    className="swipper-landing-component w-full h-screen max-h-[700px]"
-                >
-                    <SwiperSlide>
-                        <SlideItem src="/works/1.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <SlideItem src="/works/2.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <SlideItem src="/works/3.jpg" />
-                    </SwiperSlide>
-                </Swiper>
-            </section> */}
 
             <section className="p-[--padding] ">
                 <div className="container">
@@ -172,7 +107,6 @@ export default function Landing() {
                             and we&apos;d like the ooportunity to re-roof yours.
                         </p>
                     </article>
-                    {/* <Banner /> */}
                     <GoogleItems classNameWrapper="mt-10" />
                 </div>
             </section>
@@ -182,26 +116,6 @@ export default function Landing() {
                     <Brands />
                 </div>
             </section>
-
-            {/* <section className="px-[--padding] pt-14 bg-[--color1-bg]">
-                <div className="container flex flex-col gap-10">
-                    <h3 className="font-title text-[--color1-txt] text-center text-3xl sm:text-5xl">
-                        Our Services
-                    </h3>
-                    <div className="relative flex">
-                        <div className="flex-1 grid xl:grid-cols-2 gap-10 mb-10">
-                            <OurServicesItem />
-                            <OurServicesItem />
-                            <OurServicesItem />
-                            <OurServicesItem />
-                        </div>
-                        <img
-                            className="absolute lg:static bottom-0 opacity-50 lg:opacity-100 w-full lg:w-auto h-full lg:h-auto object-contain object-bottom"
-                            src="/img/25.png"
-                        />
-                    </div>
-                </div>
-            </section> */}
 
             <section className="pt-14">
                 <OurComponentSection />
@@ -255,68 +169,3 @@ function AccordionItem({ title, text }) {
         </div>
     );
 }
-
-// function OurServicesItem() {
-//     return (
-//         <div className="relative z-10 flex justify-center items-center text-center p-5 bg-black/20 rounded-xl font-content font-bold text-[--color1-txt] border-2 border-white/30">
-//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perspiciatis dolorum
-//             expedita natus impedit, cupiditate nihil, nostrum mollitia cum, corrupti voluptas quam
-//             doloribus enim. Non accusamus quas dolorem architecto vitae!
-//         </div>
-//     );
-// }
-
-// function SlideItem({ src }) {
-//     return (
-//         <div className="w-full h-full">
-//             <img src={src} className="w-full h-full object-cover" />
-//         </div>
-//     );
-// }
-
-// function Banner() {
-//     return (
-//         <div className="relative flex w-full pt-20">
-//             <FontAwesomeIcon
-//                 icon={faQuoteLeft}
-//                 className="z-10 xl:-left-20 2xl:-left-36 top-5 absolute text-[150px] md:text-[180px]"
-//             />
-
-//             <Swiper
-//                 modules={[Autoplay, Navigation]}
-//                 navigation={true}
-//                 autoplay={{ delay: 5000 }}
-//                 speed={1500}
-//                 slidesPerView={3}
-//                 breakpoints={{
-//                     0: { slidesPerView: 1 },
-//                     320: { slidesPerView: 1 },
-//                     640: { slidesPerView: 2 },
-//                     1024: { slidesPerView: 3 },
-//                     1280: { slidesPerView: 3 },
-//                 }}
-//                 spaceBetween={30}
-//                 loop={true}
-//                 grabCursor={true}
-//                 className="swipper-landing-component swipper-landing-component-dark"
-//             >
-//                 {stories.map((item) => (
-//                     <SwiperSlide className="pt-12 " key={item.id}>
-//                         <ItemCard {...item} />
-//                     </SwiperSlide>
-//                 ))}
-//             </Swiper>
-//         </div>
-//     );
-// }
-
-// function ItemCard({ img, description }) {
-//     return (
-//         <div className="relative bg-[--color1-bg] w-full rounded-3xl pt-16 p-10 ">
-//             <div className="absolute flex justify-center items-center w-24 h-24  -top-12 right-7 border-solid border-8 border-white bg-gray-400 rounded-full overflow-hidden">
-//                 <img src={img} className="w-full h-full object-cover" />
-//             </div>
-//             <p className=" font-title text-lg">{description}</p>
-//         </div>
-//     );
-// }
