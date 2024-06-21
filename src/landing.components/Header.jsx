@@ -1,11 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import tinycolor from "tinycolor2";
 import FormConsult from "./Formconsult";
-import { clsx } from "clsx";
+import socials from "./../mooks/social.json";
+import { InfoContext } from "../context/info";
 
 // Styled components
 
@@ -24,18 +25,19 @@ const TopHeader = styled.div`
     display: none;
 `;
 
+// **Desktop Version Components**
 // Main header component with styles
 const MainHeader = styled.div`
     position: fixed;
     top: ${(props) => (props.isTopHeaderVisible ? "1rem" : "0.5rem")};
     left: 50%;
     transform: translateX(-50%);
-    z-index: 49;
+    z-index: 50;
     width: 90%;
     max-width: 1400px;
     padding: 2.25rem 1rem;
     height: 3rem;
-    background: ${(props) => (props.isTop ? "transparent" : "#000000")};
+    background: ${(props) => (props.isTop ? "rgba(0, 0, 0, 0.5)" : "#000000")};
     color: ${(props) => (props.isTop ? props.textColor : "white")};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
@@ -53,20 +55,19 @@ const LogoWrapper = styled(Link)`
 
 // Logo image component with styles
 const Logo = styled.img`
-    width: 5rem;
-    height: 5rem;
+    width: auto;
+    height: 100%;
+    max-height: 5rem;
     object-fit: contain;
 
     @media (min-width: 768px) {
-        width: 6rem;
-        height: 6rem;
+        max-height: 6rem;
     }
 `;
 
 // Navigation link component with styles
 const NavLink = styled(Link)`
     padding: 0.4rem 0.8rem;
-
     text-transform: uppercase;
     font-weight: 600;
     font-family: "Arial", sans-serif;
@@ -87,26 +88,9 @@ const NavLink = styled(Link)`
       `}
 `;
 
-// Mobile menu component with styles
-const MobileMenu = styled.div`
-    display: ${(props) => (props.isOpen ? "flex" : "none")};
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #1f2937;
-    padding: 1rem;
-    color: #faa819;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 50;
-`;
-
 // Free estimate button component with styles
 const FreeEstimateButton = styled.button`
-    padding: 0.5rem 1rem; // Ajustado el padding para un botón más pequeño
+    padding: 0.5rem 1rem;
     background-color: #dc2626;
     color: white;
     border-radius: 0.75rem;
@@ -120,9 +104,7 @@ const FreeEstimateButton = styled.button`
         transform: scale(1.05);
     }
     @media (max-width: 767px) {
-        width: auto; // No ocupar todo el ancho en móviles
-        text-align: center;
-        margin: 0.5rem auto; // Centrar el botón en móviles
+        margin: 0 auto;
     }
 `;
 
@@ -134,15 +116,14 @@ const SubMenuContainer = styled.div`
 // Submenu component with styles
 const SubMenu = styled.div`
     display: flex;
-    flex-direction: column;
-    background-color: #3a3a3a;
+    background-color: #1f2937;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 1rem;
-    width: 400px;
+    width: ${(props) => (props.isHelp ? "250px" : "500px")};
     z-index: 48;
     padding: 1rem;
     visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
@@ -163,8 +144,10 @@ const SubMenuTitle = styled.div`
     font-family: "Arial", sans-serif;
     padding: 0.5rem 0;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
+    text-align: center;
+    margin-bottom: 0.5rem;
 `;
 
 // Submenu link component with styles
@@ -175,8 +158,131 @@ const SubMenuLink = styled(Link)`
     display: block;
     font-family: "Arial", sans-serif;
     font-weight: 300;
+    padding-left: 1.5rem;
     &:hover {
         color: #f8a61f;
+    }
+`;
+
+// Divider component
+const Divider = styled.div`
+    width: 1px;
+    background-color: #ffffff;
+    margin: 0 1rem;
+`;
+
+// **Mobile Version Components**
+// Mobile header component with styles
+const MobileHeaderWrapper = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+`;
+
+const MobileMenu = styled.div`
+    display: ${(props) => (props.isOpen ? "flex" : "none")};
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #1f2937;
+    padding: 1rem;
+    color: #ffffff;
+    position: fixed;
+    top: 4rem; /* Ajusta el top para que esté debajo del header */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 4rem); /* Ajusta la altura para que no cubra el header */
+    z-index: 49;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+`;
+
+const MobileNavLink = styled(Link)`
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:hover {
+        background-color: #374151;
+    }
+`;
+
+const MobileSubMenuTitle = styled.div`
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+    padding-left: 2rem;
+`;
+
+const MobileSubMenuLink = styled(Link)`
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    display: block;
+    font-family: "Arial", sans-serif;
+    padding-left: 3rem;
+    &:hover {
+        background-color: #4b5563;
+    }
+`;
+
+const MobileSubMenuToggle = styled.div`
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        background-color: #374151;
+    }
+`;
+
+const SeeMore = styled.span`
+    font-style: italic;
+    color: gray;
+    font-size: 0.8rem;
+`;
+
+// Join our community section
+const CommunitySection = styled.div`
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Push to the bottom of the mobile menu */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+`;
+
+const SocialIcons = styled.div`
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    svg {
+        width: 2rem; /* Tamaño más grande */
+        height: 2rem; /* Tamaño más grande */
     }
 `;
 
@@ -235,175 +341,214 @@ export default function Header({
                 </span>
             </TopHeader>
 
-            <MainHeader isTopHeaderVisible={isTopHeaderVisible} isTop={isTop} textColor={textColor}>
-                <LogoWrapper to="/">
-                    <Logo src="/img/logo.png" alt="Logo" />
-                </LogoWrapper>
-
-                <div className="hidden lg:flex items-center space-x-4">
-                    <Option name="Home" to="/" isTop={isTop} textColor={textColor} />
-                    <SubMenuContainer
-                        onMouseEnter={() => toggleSubMenu("services")}
-                        onMouseLeave={() => toggleSubMenu(null)}
-                    >
-                        <NavLink to="#" isTop={isTop} textColor={textColor}>
-                            Services
-                        </NavLink>
-                        <SubMenu isVisible={activeSubMenu === "services"}>
-                            <SubMenuColumn>
-                                <SubMenuTitle>Home Improvement</SubMenuTitle>
-                                <SubMenuLink to="/services/roofing">Roofing</SubMenuLink>
-                                <SubMenuLink to="/services/siding">Siding</SubMenuLink>
-                                <SubMenuLink to="/services/gutter">Gutter</SubMenuLink>
-                                <SubMenuLink to="/services/carpentry">Carpentry</SubMenuLink>
-                                <SubMenuLink to="/services/paint">Painting</SubMenuLink>
-                            </SubMenuColumn>
-                            <SubMenuColumn>
-                                <SubMenuTitle>Restoration</SubMenuTitle>
-                                <SubMenuLink to="/restoration/wind-damage">Wind Damage</SubMenuLink>
-                                <SubMenuLink to="/restoration/water-damage">
-                                    Water Damage
-                                </SubMenuLink>
-                                <SubMenuLink to="/restoration/tree-damage">Tree Damage</SubMenuLink>
-                            </SubMenuColumn>
-                        </SubMenu>
-                    </SubMenuContainer>
-                    <Option name="Financing" to="/financing" isTop={isTop} textColor={textColor} />
-                    <Option name="Gallery" to="/gallery" isTop={isTop} textColor={textColor} />
-                    <Option name="Areas" to="/work-areas" isTop={isTop} textColor={textColor} />
-                    <SubMenuContainer
-                        onMouseEnter={() => toggleSubMenu("help")}
-                        onMouseLeave={() => toggleSubMenu(null)}
-                    >
-                        <NavLink to="#" isTop={isTop} textColor={textColor}>
-                            Help
-                        </NavLink>
-                        <SubMenu isVisible={activeSubMenu === "help"}>
-                            <SubMenuColumn>
-                                <SubMenuTitle>Help</SubMenuTitle>
-                                <SubMenuLink to="/about-us">About Us</SubMenuLink>
-                                <SubMenuLink to="/contact-us">Contact Us</SubMenuLink>
-                                <SubMenuLink to="/work-with-us">Work With Us</SubMenuLink>
-                                <SubMenuLink to="/faq">Faq</SubMenuLink>
-                            </SubMenuColumn>
-                        </SubMenu>
-                    </SubMenuContainer>
-                    <Option
-                        name="Roof Designer"
-                        to="/roof-designer"
-                        isTop={isTop}
-                        textColor={textColor}
-                    />
-                </div>
-
-                <FreeEstimateButton onClick={() => setIsVisibleModalFormConsult(true)}>
-                    Free Estimates
-                </FreeEstimateButton>
-
-                <div className="lg:hidden flex items-center">
-                    <button onClick={() => setIsOpen(!isOpen)}>
-                        <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
-                    </button>
-                </div>
-            </MainHeader>
-
-            <MobileMenu isOpen={isOpen}>
-                <button
-                    onClick={() => setIsOpen(false)}
-                    className="self-end text-white text-3xl mb-4"
+            {/* Desktop Header */}
+            <div className="hidden lg:block">
+                <MainHeader
+                    isTopHeaderVisible={isTopHeaderVisible}
+                    isTop={isTop}
+                    textColor={textColor}
                 >
-                    <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <Option name="Home" to="/" onClick={() => setIsOpen(false)} />
-                <SubMenuContainer>
-                    <NavLink
-                        to="#"
-                        onClick={() => toggleSubMenu("services")}
-                        isTop={isTop}
-                        textColor={textColor}
-                    >
-                        Services{" "}
-                        <FontAwesomeIcon
-                            icon={activeSubMenu === "services" ? faAngleUp : faAngleDown}
+                    <LogoWrapper to="/">
+                        <Logo src="/img/logo.png" alt="Logo" />
+                    </LogoWrapper>
+
+                    <div className="hidden lg:flex items-center space-x-4">
+                        <Option name="Home" to="/" isTop={isTop} textColor={textColor} />
+                        <SubMenuContainer
+                            onMouseEnter={() => toggleSubMenu("services")}
+                            onMouseLeave={() => toggleSubMenu(null)}
+                        >
+                            <NavLink to="#" isTop={isTop} textColor={textColor}>
+                                Services <FontAwesomeIcon icon={faAngleDown} />
+                            </NavLink>
+                            <SubMenu isVisible={activeSubMenu === "services"} isHelp={false}>
+                                <SubMenuColumn>
+                                    <SubMenuTitle>Home Improvement</SubMenuTitle>
+                                    <SubMenuLink to="/services/roofing">Roofing</SubMenuLink>
+                                    <SubMenuLink to="/services/siding">Siding</SubMenuLink>
+                                    <SubMenuLink to="/services/gutter">Gutter</SubMenuLink>
+                                    <SubMenuLink to="/services/carpentry">Carpentry</SubMenuLink>
+                                    <SubMenuLink to="/services/paint">Painting</SubMenuLink>
+                                </SubMenuColumn>
+                                <Divider />
+                                <SubMenuColumn>
+                                    <SubMenuTitle>Restoration</SubMenuTitle>
+                                    <SubMenuLink to="/restoration/wind-damage">
+                                        Wind Damage
+                                    </SubMenuLink>
+                                    <SubMenuLink to="/restoration/water-damage">
+                                        Water Damage
+                                    </SubMenuLink>
+                                    <SubMenuLink to="/restoration/tree-damage">
+                                        Tree Damage
+                                    </SubMenuLink>
+                                </SubMenuColumn>
+                            </SubMenu>
+                        </SubMenuContainer>
+                        <Option
+                            name="Financing"
+                            to="/financing"
+                            isTop={isTop}
+                            textColor={textColor}
                         />
-                    </NavLink>
-                    <SubMenu isVisible={activeSubMenu === "services"}>
-                        <SubMenuColumn>
-                            <SubMenuTitle>Home Improvement</SubMenuTitle>
-                            <SubMenuLink to="/services/roofing" onClick={() => setIsOpen(false)}>
+                        <Option name="Gallery" to="/gallery" isTop={isTop} textColor={textColor} />
+                        <Option name="Areas" to="/work-areas" isTop={isTop} textColor={textColor} />
+                        <SubMenuContainer
+                            onMouseEnter={() => toggleSubMenu("help")}
+                            onMouseLeave={() => toggleSubMenu(null)}
+                        >
+                            <NavLink to="#" isTop={isTop} textColor={textColor}>
+                                Help <FontAwesomeIcon icon={faAngleDown} />
+                            </NavLink>
+                            <SubMenu isVisible={activeSubMenu === "help"} isHelp={true}>
+                                <SubMenuColumn>
+                                    <SubMenuTitle>Help</SubMenuTitle>
+                                    <SubMenuLink to="/about-us">About Us</SubMenuLink>
+                                    <SubMenuLink to="/contact-us">Contact Us</SubMenuLink>
+                                    <SubMenuLink to="/work-with-us">Work With Us</SubMenuLink>
+                                    <SubMenuLink to="/faq">Faq</SubMenuLink>
+                                </SubMenuColumn>
+                            </SubMenu>
+                        </SubMenuContainer>
+                        <Option
+                            name="Roof Designer"
+                            to="/roof-designer"
+                            isTop={isTop}
+                            textColor={textColor}
+                        />
+                    </div>
+
+                    <FreeEstimateButton onClick={() => setIsVisibleModalFormConsult(true)}>
+                        Free Estimates
+                    </FreeEstimateButton>
+                </MainHeader>
+            </div>
+
+            {/* Mobile Header */}
+            <div className="lg:hidden">
+                <MobileHeaderWrapper>
+                    <Link to="/">
+                        <img src="/img/logo.png" alt="Logo" className="h-10" />
+                    </Link>
+                    <FreeEstimateButton onClick={() => setIsVisibleModalFormConsult(true)}>
+                        Free Estimates
+                    </FreeEstimateButton>
+                    <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+                        <FontAwesomeIcon icon={faBars} className="text-2xl" />
+                    </button>
+                </MobileHeaderWrapper>
+
+                <MobileMenu isOpen={isOpen}>
+                    <button
+                        onClick={() => setIsOpen(false)}
+                        className="self-end text-white text-3xl mb-4"
+                    >
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                    <MobileNavLink to="/" onClick={() => setIsOpen(false)}>
+                        Home
+                    </MobileNavLink>
+                    <MobileSubMenuToggle onClick={() => toggleSubMenu("services")}>
+                        Services
+                        <SeeMore>{activeSubMenu === "services" ? "See Less" : "See More"}</SeeMore>
+                    </MobileSubMenuToggle>
+                    {activeSubMenu === "services" && (
+                        <>
+                            <MobileSubMenuTitle>Home Improvement</MobileSubMenuTitle>
+                            <MobileSubMenuLink
+                                to="/services/roofing"
+                                onClick={() => setIsOpen(false)}
+                            >
                                 Roofing
-                            </SubMenuLink>
-                            <SubMenuLink to="/services/siding" onClick={() => setIsOpen(false)}>
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink
+                                to="/services/siding"
+                                onClick={() => setIsOpen(false)}
+                            >
                                 Siding
-                            </SubMenuLink>
-                            <SubMenuLink to="/services/gutter" onClick={() => setIsOpen(false)}>
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink
+                                to="/services/gutter"
+                                onClick={() => setIsOpen(false)}
+                            >
                                 Gutter
-                            </SubMenuLink>
-                            <SubMenuLink to="/services/carpentry" onClick={() => setIsOpen(false)}>
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink
+                                to="/services/carpentry"
+                                onClick={() => setIsOpen(false)}
+                            >
                                 Carpentry
-                            </SubMenuLink>
-                            <SubMenuLink to="/services/paint" onClick={() => setIsOpen(false)}>
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink
+                                to="/services/paint"
+                                onClick={() => setIsOpen(false)}
+                            >
                                 Painting
-                            </SubMenuLink>
-                        </SubMenuColumn>
-                        <SubMenuColumn>
-                            <SubMenuTitle>Restoration</SubMenuTitle>
-                            <SubMenuLink
+                            </MobileSubMenuLink>
+                            <MobileSubMenuTitle>Restoration</MobileSubMenuTitle>
+                            <MobileSubMenuLink
                                 to="/restoration/wind-damage"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Wind Damage
-                            </SubMenuLink>
-                            <SubMenuLink
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink
                                 to="/restoration/water-damage"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Water Damage
-                            </SubMenuLink>
-                            <SubMenuLink
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink
                                 to="/restoration/tree-damage"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Tree Damage
-                            </SubMenuLink>
-                        </SubMenuColumn>
-                    </SubMenu>
-                </SubMenuContainer>
-                <Option name="Financing" to="/financing" onClick={() => setIsOpen(false)} />
-                <Option name="Gallery" to="/gallery" onClick={() => setIsOpen(false)} />
-                <Option name="Areas" to="/work-areas" onClick={() => setIsOpen(false)} />
-                <SubMenuContainer>
-                    <NavLink
-                        to="#"
-                        onClick={() => toggleSubMenu("help")}
-                        isTop={isTop}
-                        textColor={textColor}
-                    >
-                        Help{" "}
-                        <FontAwesomeIcon
-                            icon={activeSubMenu === "help" ? faAngleUp : faAngleDown}
-                        />
-                    </NavLink>
-                    <SubMenu isVisible={activeSubMenu === "help"}>
-                        <SubMenuColumn>
-                            <SubMenuTitle>Help</SubMenuTitle>
-                            <SubMenuLink to="/about-us" onClick={() => setIsOpen(false)}>
-                                About Us
-                            </SubMenuLink>
-                            <SubMenuLink to="/contact-us" onClick={() => setIsOpen(false)}>
-                                Contact Us
-                            </SubMenuLink>
-                            <SubMenuLink to="/work-with-us" onClick={() => setIsOpen(false)}>
+                            </MobileSubMenuLink>
+                        </>
+                    )}
+                    <MobileNavLink to="/financing" onClick={() => setIsOpen(false)}>
+                        Financing
+                    </MobileNavLink>
+                    <MobileNavLink to="/gallery" onClick={() => setIsOpen(false)}>
+                        Gallery
+                    </MobileNavLink>
+                    <MobileNavLink to="/work-areas" onClick={() => setIsOpen(false)}>
+                        Service Areas
+                    </MobileNavLink>
+                    <MobileSubMenuToggle onClick={() => toggleSubMenu("help")}>
+                        Help
+                        <SeeMore>{activeSubMenu === "help" ? "See Less" : "See More"}</SeeMore>
+                    </MobileSubMenuToggle>
+                    {activeSubMenu === "help" && (
+                        <>
+                            <MobileSubMenuLink to="/work-with-us" onClick={() => setIsOpen(false)}>
                                 Work With Us
-                            </SubMenuLink>
-                            <SubMenuLink to="/faq" onClick={() => setIsOpen(false)}>
-                                Faq
-                            </SubMenuLink>
-                        </SubMenuColumn>
-                    </SubMenu>
-                </SubMenuContainer>
-                <Option name="Roof Designer" to="/roof-designer" onClick={() => setIsOpen(false)} />
-            </MobileMenu>
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink to="/contact-us" onClick={() => setIsOpen(false)}>
+                                Contact Us
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink to="/about-us" onClick={() => setIsOpen(false)}>
+                                About Us
+                            </MobileSubMenuLink>
+                            <MobileSubMenuLink to="/faq" onClick={() => setIsOpen(false)}>
+                                FAQ's
+                            </MobileSubMenuLink>
+                        </>
+                    )}
+                    <MobileNavLink to="/roof-designer" onClick={() => setIsOpen(false)}>
+                        Roof Designer
+                    </MobileNavLink>
+                    {/* Community Section */}
+                    <CommunitySection>
+                        <span className="opacity-70">Join our community</span>
+                        <SocialIcons>
+                            {socials.map((social) => (
+                                <SocialItem key={social.id} {...social} />
+                            ))}
+                        </SocialIcons>
+                    </CommunitySection>
+                </MobileMenu>
+            </div>
 
             <ModalFormConsult
                 isVisible={isVisibleModalFormConsult}
@@ -471,5 +616,16 @@ function ModalFormConsult({ isVisible = false, onClose = null }) {
                 </p>
             </div>
         </div>
+    );
+}
+
+function SocialItem({ url, icon }) {
+    return (
+        <a href={url} target="_blank" rel="noreferrer">
+            <div
+                dangerouslySetInnerHTML={{ __html: icon }}
+                className="icon w-8 aspect-square fill-white"
+            />
+        </a>
     );
 }
