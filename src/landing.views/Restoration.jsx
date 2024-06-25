@@ -2,7 +2,7 @@ import AnimatedElement from "../components/AnimatedElement";
 import BannerItem from "../landing.components/BannerItem";
 import SectionContact from "../landing.components/SectionContact";
 import { Link } from "react-router-dom";
-
+import BBB from "../landing.components/bbb";
 export default function Restoration() {
     return (
         <div
@@ -15,6 +15,11 @@ export default function Restoration() {
                 <section className="relative overflow-hidden p-[--padding]">
                     <div className="absolute inset-0 w-full h-full ">
                         <img src="/img/3.png" className="w-full h-full object-cover" />
+                    </div>
+                    {/* boton bbb */}
+                    <div>
+                        {/* Otro contenido de la página */}
+                        <BBB />
                     </div>
                     <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-transparent" />

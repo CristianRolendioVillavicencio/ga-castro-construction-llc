@@ -9,7 +9,7 @@ import {
 import Button from "../landing.components/Button";
 import SectionContact from "../landing.components/SectionContact";
 import Brands from "../landing.components/Brands";
-
+import BBB from "../landing.components/bbb";
 export default function Financing() {
     return (
         <AnimatedElement>
@@ -17,7 +17,11 @@ export default function Financing() {
                 <img src="/image/financing1.jpg" className="absolute w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-transparent" />
                 <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
-
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
+                </div>
                 <div className="container p-[--padding] py-52 sm:py-60 flex w-full h-full items-center justify-center ">
                     <div className="relative flex flex-row items-center  rounded-tr-3xl rounded-bl-3xl border-solid border-4 gap-5 px-5 py-3">
                         <FontAwesomeIcon

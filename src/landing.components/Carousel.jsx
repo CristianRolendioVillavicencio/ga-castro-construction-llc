@@ -57,7 +57,7 @@ export default function Carousel({ data, autoPlay = true, delay = 5000, directio
                                 onClick={handleClickItem(index)}
                                 id={"img-slider" + index}
                             >
-                                <div className="filter-efect relative w-full h-full bg-gradient-to-b from-black to-transparent" />
+                                <div className="filter-efect relative w-full h-full custom-gradient" />
                                 <div className="content">
                                     <div className="name">{item.title}</div>
                                     <div className="des">{item.description}</div>

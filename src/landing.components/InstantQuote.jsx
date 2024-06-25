@@ -5,7 +5,7 @@ export default function InstantQuote() {
     return (
         <div className=" flex flex-col w-full items-center py-10  gap-14 ">
             <h2 className="font-title text-5xl text-center  tracking-wider">
-                Access an instant quote
+            Are you looking for prices for your roof change?
             </h2>
             <div className="flex flex-col lg:flex-row w-full ">
                 <div className="flex flex-1 items-center justify-center">

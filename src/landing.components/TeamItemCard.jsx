@@ -58,8 +58,12 @@ export default function TeamItemCard({ name, rol, description = "", photo, socia
                         <img src={photo} className="w-fill h-full object-contain" />
                     </div>
                 </div>
-                <div className="flex flex-col px-5 items-center gap-4">
-                    <div className="flex flex-col text-center gap-1">
+                <div className="flex flex-col px-5 items-center gap-2">
+                    {" "}
+                    {/* Ajusta la brecha en móvil */}
+                    <div className="flex flex-col text-center gap-0.5">
+                        {" "}
+                        {/* Ajusta la brecha en móvil */}
                         <h2 className="text-base font-link">{name}</h2>
                         <h3 className="text-sm opacity-60">{rol}</h3>
                     </div>

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import SectionContact from "../landing.components/SectionContact";
 import { clsx } from "clsx";
-
+import BBB from "../landing.components/bbb";
 export default function TreeDamage() {
     const fairfieldCountyCities = [
         "Bridgeport",
@@ -85,6 +85,11 @@ export default function TreeDamage() {
                         imgSrc="/img/9.png"
                         imgText="Claims counseling process"
                     />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
             </section>
             <section className="relative px-[--padding] py-52">

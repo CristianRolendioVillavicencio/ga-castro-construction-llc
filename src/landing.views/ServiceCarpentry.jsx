@@ -4,13 +4,18 @@ import Button from "../landing.components/Button";
 import SectionContact from "../landing.components/SectionContact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-
+import BBB from "../landing.components/bbb";
 export default function ServiceCarpentry() {
     return (
         <AnimatedElement>
             <section className="relative overflow-hidden" style={{ marginTop: "90px" }}>
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/image/carpentry-1.jpg" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="relative container font-title p-[--padding]">
                     <div className="flex flex-col w-full items-center text-white py-52 md:p-52 gap-14 ">

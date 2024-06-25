@@ -3,7 +3,7 @@ import Button from "../landing.components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faRightLong } from "@fortawesome/free-solid-svg-icons";
 import SectionContact from "../landing.components/SectionContact";
-
+import BBB from "../landing.components/bbb";
 export default function WindDamage() {
     const fairfieldCountyCities = [
         "Bridgeport",
@@ -104,6 +104,11 @@ export default function WindDamage() {
             <section className="relative">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/img/wind-damage.jpg" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                     {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent" />

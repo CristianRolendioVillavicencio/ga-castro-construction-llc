@@ -1,16 +1,16 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import tinycolor from "tinycolor2";
-import FormConsult from "./Formconsult";
+import LazyImage from "./LazyImage";
 import socials from "./../mooks/social.json";
 import { InfoContext } from "../context/info";
 
-// Styled components
+// Carga diferida del componente FormConsult
+const FormConsult = React.lazy(() => import("./Formconsult"));
 
-// Top header component with styles
 const TopHeader = styled.div`
     background-color: #dc2626;
     color: #ffffff;
@@ -25,8 +25,6 @@ const TopHeader = styled.div`
     display: none;
 `;
 
-// **Desktop Version Components**
-// Main header component with styles
 const MainHeader = styled.div`
     position: fixed;
     top: ${(props) => (props.isTopHeaderVisible ? "1rem" : "0.5rem")};
@@ -47,14 +45,12 @@ const MainHeader = styled.div`
     transition: background 0.3s, color 0.3s, top 0.3s, height 0.3s;
 `;
 
-// Logo wrapper component with styles
 const LogoWrapper = styled(Link)`
     display: flex;
     align-items: center;
 `;
 
-// Logo image component with styles
-const Logo = styled.img`
+const Logo = styled(LazyImage)`
     width: auto;
     height: 100%;
     max-height: 5rem;
@@ -65,7 +61,6 @@ const Logo = styled.img`
     }
 `;
 
-// Navigation link component with styles
 const NavLink = styled(Link)`
     padding: 0.4rem 0.8rem;
     text-transform: uppercase;
@@ -88,7 +83,6 @@ const NavLink = styled(Link)`
       `}
 `;
 
-// Free estimate button component with styles
 const FreeEstimateButton = styled.button`
     padding: 0.5rem 1rem;
     background-color: #dc2626;
@@ -108,12 +102,10 @@ const FreeEstimateButton = styled.button`
     }
 `;
 
-// Submenu container component with styles
 const SubMenuContainer = styled.div`
     position: relative;
 `;
 
-// Submenu component with styles
 const SubMenu = styled.div`
     display: flex;
     background-color: #1f2937;
@@ -132,13 +124,11 @@ const SubMenu = styled.div`
     border-radius: 1rem;
 `;
 
-// Submenu column component with styles
 const SubMenuColumn = styled.div`
     flex: 1;
     padding: 0 1rem;
 `;
 
-// Submenu title component with styles
 const SubMenuTitle = styled.div`
     font-weight: 600;
     font-family: "Arial", sans-serif;
@@ -150,7 +140,6 @@ const SubMenuTitle = styled.div`
     margin-bottom: 0.5rem;
 `;
 
-// Submenu link component with styles
 const SubMenuLink = styled(Link)`
     padding: 0.25rem 0;
     color: #f8f8f8;
@@ -164,15 +153,12 @@ const SubMenuLink = styled(Link)`
     }
 `;
 
-// Divider component
 const Divider = styled.div`
     width: 1px;
     background-color: #ffffff;
     margin: 0 1rem;
 `;
 
-// **Mobile Version Components**
-// Mobile header component with styles
 const MobileHeaderWrapper = styled.div`
     position: fixed;
     top: 0;
@@ -195,10 +181,10 @@ const MobileMenu = styled.div`
     padding: 1rem;
     color: #ffffff;
     position: fixed;
-    top: 4rem; /* Ajusta el top para que esté debajo del header */
+    top: 4rem;
     left: 0;
     width: 100%;
-    height: calc(100% - 4rem); /* Ajusta la altura para que no cubra el header */
+    height: calc(100% - 4rem);
     z-index: 49;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     overflow-y: auto;
@@ -262,11 +248,10 @@ const SeeMore = styled.span`
     font-size: 0.8rem;
 `;
 
-// Join our community section
 const CommunitySection = styled.div`
     text-align: center;
-    padding: 1rem;
-    margin-top: auto; /* Push to the bottom of the mobile menu */
+    padding: 100px;
+    margin-top: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -281,8 +266,8 @@ const SocialIcons = styled.div`
     justify-content: center;
     align-items: center;
     svg {
-        width: 2rem; /* Tamaño más grande */
-        height: 2rem; /* Tamaño más grande */
+        width: 2rem;
+        height: 2rem;
     }
 `;
 
@@ -295,19 +280,19 @@ export default function Header({
     const { pathname } = useLocation();
     const isSliderIn = withSliderIn.find((path) => path.includes(pathname)) ? true : false;
 
-    const [isOpen, setIsOpen] = useState(false); // State for mobile menu
-    const [isTopHeaderVisible, setIsTopHeaderVisible] = useState(true); // State for top header visibility
-    const [activeSubMenu, setActiveSubMenu] = useState(null); // State for active submenu
-    const [isTop, setIsTop] = useState(true); // State for tracking if the header is at the top
-    const [textColor, setTextColor] = useState("white"); // State for the text color
+    const [isOpen, setIsOpen] = useState(false);
+    const [isTopHeaderVisible, setIsTopHeaderVisible] = useState(true);
+    const [activeSubMenu, setActiveSubMenu] = useState(null);
+    const [isTop, setIsTop] = useState(true);
+    const [textColor, setTextColor] = useState("white");
 
     const handleScroll = () => {
         if (window.scrollY === 0) {
-            setIsTopHeaderVisible(true); // Show top header when at the top
-            setIsTop(true); // Set header to top state
+            setIsTopHeaderVisible(true);
+            setIsTop(true);
         } else {
-            setIsTopHeaderVisible(false); // Hide top header when scrolling down
-            setIsTop(false); // Unset header from top state
+            setIsTopHeaderVisible(false);
+            setIsTop(false);
         }
     };
 
@@ -326,11 +311,11 @@ export default function Header({
     }, []);
 
     const toggleSubMenu = (menu) => {
-        setActiveSubMenu(activeSubMenu === menu ? null : menu); // Toggle submenu visibility
+        setActiveSubMenu(activeSubMenu === menu ? null : menu);
     };
 
     if (closeElement.current) {
-        closeElement.current.addEventListener("click", () => setIsOpen(false)); // Close mobile menu
+        closeElement.current.addEventListener("click", () => setIsOpen(false));
     }
 
     return (
@@ -349,7 +334,9 @@ export default function Header({
                     textColor={textColor}
                 >
                     <LogoWrapper to="/">
-                        <Logo src="/img/logo.png" alt="Logo" />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Logo src="/img/logo.png" alt="Logo" />
+                        </Suspense>
                     </LogoWrapper>
 
                     <div className="hidden lg:flex items-center space-x-4">
@@ -428,7 +415,9 @@ export default function Header({
             <div className="lg:hidden">
                 <MobileHeaderWrapper>
                     <Link to="/">
-                        <img src="/img/logo.png" alt="Logo" className="h-10" />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <LazyImage src="/img/logo.png" alt="Logo" className="h-10" />
+                        </Suspense>
                     </Link>
                     <FreeEstimateButton onClick={() => setIsVisibleModalFormConsult(true)}>
                         Free Estimates
@@ -538,7 +527,6 @@ export default function Header({
                     <MobileNavLink to="/roof-designer" onClick={() => setIsOpen(false)}>
                         Roof Designer
                     </MobileNavLink>
-                    {/* Community Section */}
                     <CommunitySection>
                         <span className="opacity-70">Join our community</span>
                         <SocialIcons>
@@ -574,10 +562,13 @@ function Option({ children, name, to, isTop, textColor, onClick, ...props }) {
             >
                 {name}
                 {children && (
-                    <FontAwesomeIcon icon={faAngleDown} className="ml-1 group-hover:hidden" />
-                )}
-                {children && (
-                    <FontAwesomeIcon icon={faAngleUp} className="ml-1 hidden group-hover:block" />
+                    <>
+                        <FontAwesomeIcon icon={faAngleDown} className="ml-1 group-hover:hidden" />
+                        <FontAwesomeIcon
+                            icon={faAngleUp}
+                            className="ml-1 hidden group-hover:block"
+                        />
+                    </>
                 )}
             </NavLink>
             {children && (
@@ -610,7 +601,9 @@ function ModalFormConsult({ isVisible = false, onClose = null }) {
                 <FontAwesomeIcon icon={faTimes} className="text-black" />
             </button>
             <div className="z-10 m-auto flex flex-col justify-center items-center">
-                <FormConsult className="h-screen max-h-[800px] overflow-y-auto" />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <FormConsult className="h-screen max-h-[800px] overflow-y-auto" />
+                </Suspense>
                 <p className="text-center text-black text-lg font-bold">
                     Press <b>ESC</b> or <b>click outside</b> the image to close
                 </p>

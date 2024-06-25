@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import SectionContact from "../landing.components/SectionContact";
 import BannerItem from "../landing.components/BannerItem";
-
+import BBB from "../landing.components/bbb";
 export default function ServiceInsuranceClaims() {
     return (
         <AnimatedElement>
@@ -16,6 +16,11 @@ export default function ServiceInsuranceClaims() {
                         imgSrc="/image/insurance-claims-1.jpg"
                         imgText="Claims couseling process"
                     />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
             </section>
             <section className="relative p-[--padding]">

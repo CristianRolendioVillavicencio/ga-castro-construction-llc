@@ -6,7 +6,7 @@ import { faTrowelBricks, faUsersGear, faStopwatch } from "@fortawesome/free-soli
 import OurServices from "../landing.components/OurServices";
 import { useContext } from "react";
 import { InfoContext } from "../context/info";
-
+import BBB from "../landing.components/bbb";
 export default function Services() {
     const { info } = useContext(InfoContext);
     return (
@@ -17,6 +17,11 @@ export default function Services() {
                         <div className="w-full h-screen">
                             <Carousel info={info} data={slides} withSlider={true} />
                         </div>
+                    </div>
+                    {/* boton bbb */}
+                    <div>
+                        {/* Otro contenido de la página */}
+                        <BBB />
                     </div>
                     <div className="flex flex-col w-full h-auto items-center bg-[#171640] text-[--color1-txt1] ">
                         <div className="relative w-full flex h-28 sm:h-36 md:h-52 justify-center">

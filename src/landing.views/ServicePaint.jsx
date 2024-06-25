@@ -1,7 +1,7 @@
 import AnimatedElement from "../components/AnimatedElement";
 import BannerItem from "../landing.components/BannerItem";
 import SectionContact from "../landing.components/SectionContact";
-
+import BBB from "../landing.components/bbb";
 export default function ServicePaint() {
     // Lista de ciudades en Fairfield County
     const fairfieldCountyCities = [
@@ -112,6 +112,11 @@ export default function ServicePaint() {
                             ))
                         )}
                     </div>
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
             </section>
             <section className="relative">

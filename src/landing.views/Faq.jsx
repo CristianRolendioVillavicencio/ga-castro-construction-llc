@@ -7,7 +7,7 @@ import Button from "../landing.components/Button";
 import { useContext, useEffect, useState } from "react";
 import { InfoContext } from "../context/info";
 import _faqs from "../mooks/faqs.json";
-
+import BBB from "../landing.components/bbb";
 export default function Faq() {
     const { info } = useContext(InfoContext);
     const url = "tel:" + info.phone;
@@ -27,6 +27,11 @@ export default function Faq() {
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/img/19.png" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/30 to-transparent" />

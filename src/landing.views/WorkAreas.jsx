@@ -5,13 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import SectionContact from "../landing.components/SectionContact";
 import GoogleItems from "../landing.components/GoogleItems";
-
+import BBB from "../landing.components/bbb";
 export default function WorkAreas() {
     return (
         <AnimatedElement>
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/img/18.png" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/30 to-transparent" />

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Worket from "../icons/Worket";
 import WorkerOfice from "../icons/WorkerOfice";
-
+import BBB from "../landing.components/bbb";
 export default function WorkWithUS() {
     const work =
         "https://employers.indeed.com/candidates/add?listQuery=c3RhdHVzTmFtZSUzREFjdGl2ZSUyNmlkJTNEMA== ";
@@ -16,6 +16,11 @@ export default function WorkWithUS() {
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/image/ciudad.jpg" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/30 to-transparent" />

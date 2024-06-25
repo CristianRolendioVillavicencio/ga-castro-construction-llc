@@ -1,40 +1,40 @@
 [
     {
         "id": 1,
-        "title": "Financing",
-        "description": "Finance your projects",
+        "title": "Financing for Construction Projects",
+        "description": "Flexible financing solutions.",
         "image": "/new/financingcopy.jpg",
         "to": "/financing",
         "button": "Apply Now"
     },
     {
         "id": 2,
-        "title": "Roofing",
-        "description": "Need a new roof?",
+        "title": "Roofing Services",
+        "description": "Top-quality roofing solutions.",
         "image": "/new/Roof2.jpg",
         "to": "/services/roofing",
         "button": "See More"
     },
     {
         "id": 3,
-        "title": "Siding",
-        "description": "Protect your home’s siding",
+        "title": "Siding Services",
+        "description": "Expert siding installation and repair.",
         "image": "/new/Siding.jpg",
         "to": "/services/siding",
         "button": "See More"
     },
     {
         "id": 4,
-        "title": "Gutters",
-        "description": "Gutter solutions for water control",
+        "title": "Gutter Services",
+        "description": "Innovative gutter solutions.",
         "image": "/new/gutters.jpg",
         "to": "/services/gutter",
         "button": "See More"
     },
     {
         "id": 5,
-        "title": "Wind Damage",
-        "description": "Repair wind damage",
+        "title": "Wind Damage Repair Services",
+        "description": "Quick wind damage repairs.",
         "image": "/img/14.jpg",
         "to": "/restoration/wind-damage",
         "button": "See More"
@@ -42,7 +42,7 @@
     {
         "id": 6,
         "title": "Water Damage",
-        "description": "Solutions for water damage",
+        "description": "Effective water damage solutions.",
         "image": "/new/5.jpg",
         "to": "/restoration/water-damage",
         "button": "See More"
@@ -50,17 +50,25 @@
     {
         "id": 7,
         "title": "Tree Damage",
-        "description": "Mitigation for tree damage to homes",
-        "image": "/new/Tree%20Damage.jpg",
+        "description": "Restore your property quickly and safely. Contact us today.",
+        "image": "/new/TreeDamage.png",
         "to": "/restoration/tree-damage",
         "button": "See More"
     },
     {
         "id": 8,
-        "title": "Mitigation",
-        "description": "Damage mitigation services",
+        "title": "Professional Mitigation Services",
+        "description": "Expert mitigation services.",
         "image": "/new/mitigation.jpg",
         "to": "/restoration/water-damage",
         "button": "See More"
+    },
+    {
+        "id": 9,
+        "title": "Copper Roofing",
+        "description": "Elegant and durable copper roofing solutions.",
+        "image": "/new/copper.jpg",
+        "to": "/services/copper-roofing",
+        "button": "Learn More"
     }
 ]

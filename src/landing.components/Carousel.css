@@ -1,3 +1,4 @@
+/* Estilos Generales para el Componente del Carrusel */
 .carousel-component {
     position: absolute;
     left: 50%;
@@ -14,64 +15,54 @@
     margin-top: 50px;
 }
 
+.custom-gradient {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 20%);
+}
+
+/* Estilos Generales para los Ítems del Carrusel */
 .carousel-component .item {
-    --width: 200px;
-    --height: 300px;
+    --width: 100px;
+    --height: 100px;
     --margin: 20px;
     --left: 50%;
     --right: 10px;
-    --bottom: 50px;
+    --bottom: 100px;
     width: var(--width);
     height: var(--height);
     background-position: 50% 50%;
     display: inline-block;
-    transition: 0.8s;
     background-size: cover;
     position: absolute;
     z-index: 1;
     bottom: var(--bottom);
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
     cursor: default;
-}
-
-.carousel-component .item:nth-child(n + 3) .filter-efect {
+    pointer-events: none;
     opacity: 0;
-    transition: all 3s ease;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-.carousel-component .item:nth-child(n + 3) {
-    cursor: pointer;
-}
-
-/* .item:nth-child(1), */
+/* Ítem visible */
 .carousel-component .item:nth-child(2) {
     left: 0;
     bottom: 0;
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
     border-radius: 0;
     width: 100%;
     height: 100%;
     box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.carousel-component .item:nth-child(3) {
-    left: calc(100vw - ((var(--width) + var(--margin)) * 3) - var(--right));
-}
-
-.carousel-component .item:nth-child(4) {
-    left: calc(100vw - ((var(--width) + var(--margin)) * 2) - var(--right));
-}
-
-.carousel-component .item:nth-child(5) {
-    left: calc(100vw - ((var(--width) + var(--margin)) * 1) - var(--right));
-}
-
-.carousel-component .item:nth-child(n + 6) {
-    left: calc(100vw + ((var(--width) + var(--margin)) * 1) + var(--right));
+/* Ocultar todos los demás elementos */
+.carousel-component .item:nth-child(n+3) {
     opacity: 0;
+    pointer-events: none;
 }
-/* .Contenido, */
+
+/* .Contenido en letras */
 .carousel-component .item .content {
     position: absolute;
     top: 50%;
@@ -85,8 +76,9 @@
     cursor: text;
     padding: 0;
     color: #eee;
-    transform: translate(0, -50%);
+    transform: translate3d(0, -50%, 0);
     display: none;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .carousel-component .item:nth-child(2) .content {
@@ -96,54 +88,66 @@
 
 .carousel-component .item .name {
     font-size: 50px;
-    font-family: title;
     font-weight: bold;
     opacity: 0;
-    text-shadow: 1px 0 1px var(--color1-txt), 0 1px 1px var(--color1-txt),
-        -1px 0 1px var(--color1-txt), 0 -1px 1px var(--color1-txt);
-    color: var(--color1-bg);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    color: #FAA819;
     line-height: 1;
     text-transform: uppercase;
     animation: showcontent 1s ease-in-out 1 forwards;
+    transition: color 0.5s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* .Botton */
+
 .carousel-component .item .des {
-    font-family: content;
     font-size: 1.6rem;
     line-height: 1.7rem;
     letter-spacing: 1px;
     margin-top: 5px;
     margin-bottom: 20px;
     opacity: 0;
-    text-shadow: 1px 0 1px #000, 0 1px 1px #000, -1px 0 1px #000, 0 -1px 1px #000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     font-weight: bold;
     color: #fff;
     animation: showcontent 1s ease-in-out 0.3s 1 forwards;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* .Dimension Booton, */
+
 .carousel-component .item button,
 .carousel-component .item a {
     padding: 10px 20px;
     margin-right: auto;
-    border: none;
+    border-radius: 10px;
     opacity: 0;
     text-transform: uppercase;
+    background-color: #FAA819;
+    color: #000;
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: showcontent 1s ease-in-out 0.6s 1 forwards;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* Mostrar Boton, */
+
+.carousel-component .item button:hover,
+.carousel-component .item a:hover {
+    background-color: #fbc02d;
+}
+
 @keyframes showcontent {
     from {
         opacity: 0;
-        transform: translate(0, 100px);
+        transform: translate3d(0, 100px, 0);
         filter: blur(33px);
     }
     to {
         opacity: 1;
-        transform: translate(0, 0);
+        transform: translate3d(0, 0, 0);
         filter: blur(0);
     }
 }
 
+/* Estilos Generales para los Botones de Navegación */
 .carousel-component .buttons {
     position: absolute;
     display: flex;
@@ -177,11 +181,12 @@
     background-color: var(--color1-bg);
 }
 
-@media (width < 1024px) {
+/* Estilos para Pantallas Pequeñas */
+@media (max-width: 1024px) {
     .carousel-component .item {
-        --width: 150px;
-        --height: 200px;
-        --margin: 20px;
+        --width: 100px;
+        --height: 100px;
+        --margin: 10px;
         --left: 30px;
     }
 
@@ -197,17 +202,16 @@
         left: calc(var(--left) + (var(--width) * 2) + (var(--margin) * 2));
     }
 
-    .carousel-component .item:nth-child(n + 6) {
+    .carousel-component .item:nth-child(n+6) {
         left: calc(var(--left) + (var(--width) * 3) + (var(--margin) * 3));
         opacity: 0;
     }
 
     .carousel-component .item .content {
-        /* top: calc(var(--header-height) + 130px); */
         left: 50%;
         top: unset;
         bottom: 50%;
-        transform: translate(-50%, 0);
+        transform: translate3d(-50%, 0, 0);
         align-items: center;
     }
 

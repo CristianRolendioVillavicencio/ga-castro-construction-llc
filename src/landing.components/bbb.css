@@ -1,0 +1,13 @@
+.bbb-image-hover {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .ruhzbum:hover .bbb-image-hover {
+    opacity: 1;
+  }
+  
+  .ruhzbum:hover .bbb-image {
+    opacity: 0;
+  }
+  

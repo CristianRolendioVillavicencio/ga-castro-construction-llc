@@ -11,16 +11,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullseye, faCheck, faEye, faHouseCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { InfoContext } from "../context/info";
+import BBB from "../landing.components/bbb";
 
 export default function AboutUs() {
     const { info } = useContext(InfoContext);
     return (
         <AnimatedElement>
             {/* Header Section */}
+
             <section className="relative overflow-hidden p-[--padding]">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/image/ciudad.jpg" className="w-full h-full object-cover" />
                 </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
+                </div>
+
                 <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-transparent" />
                 <div className="relative z-10 flex flex-col pb-64 pt-32 container text-[--color1-txt1] items-center">

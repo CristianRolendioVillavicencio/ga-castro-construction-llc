@@ -5,7 +5,7 @@ import Button from "../landing.components/Button";
 import BannerItem from "../landing.components/BannerItem";
 import GoogleItems from "../landing.components/GoogleItems";
 import SectionContact from "../landing.components/SectionContact";
-
+import BBB from "../landing.components/bbb";
 export default function WaterDamage({ setIsVisibleModalFormConsult }) {
     const fairfieldCountyCities = [
         "Bridgeport",
@@ -82,6 +82,11 @@ export default function WaterDamage({ setIsVisibleModalFormConsult }) {
             <section className="relative overflow-hidden p-[--padding] ">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/img/4.jpg" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="relative z-10 flex flex-col pb-64 gap-5 pt-48 container text-[--color1-txt2] items-center">
                     <h3 className="font-title text-4xl sm:text-6xl text-center">

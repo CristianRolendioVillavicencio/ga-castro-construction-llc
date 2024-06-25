@@ -5,81 +5,81 @@ import SectionContact from "../landing.components/SectionContact";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GoogleItems from "../landing.components/GoogleItems";
-
+import BBB from "../landing.components/bbb";
 export default function ServiceSiding() {
     const fairfieldCountyCities = [
-        'Bridgeport',
-        'Stamford',
-        'Norwalk',
-        'Danbury',
-        'Fairfield',
-        'Greenwich',
-        'Westport',
-        'Shelton',
-        'Trumbull',
-        'Stratford',
-        'Ridgefield',
-        'Bethel',
-        'Brookfield',
-        'Darien',
-        'Easton',
-        'Monroe',
-        'New Canaan',
-        'New Fairfield',
-        'Newtown',
-        'Redding',
-        'Weston',
-        'Wilton'
+        "Bridgeport",
+        "Stamford",
+        "Norwalk",
+        "Danbury",
+        "Fairfield",
+        "Greenwich",
+        "Westport",
+        "Shelton",
+        "Trumbull",
+        "Stratford",
+        "Ridgefield",
+        "Bethel",
+        "Brookfield",
+        "Darien",
+        "Easton",
+        "Monroe",
+        "New Canaan",
+        "New Fairfield",
+        "Newtown",
+        "Redding",
+        "Weston",
+        "Wilton",
     ];
 
     const newHavenCountyCities = [
-        'New Haven',
-        'Waterbury',
-        'Meriden',
-        'Milford',
-        'West Haven',
-        'East Haven',
-        'Wallingford',
-        'Hamden',
-        'Cheshire',
-        'Branford',
-        'Derby',
-        'Guilford',
-        'Madison',
-        'Middlebury',
-        'Naugatuck',
-        'North Branford',
-        'North Haven',
-        'Orange',
-        'Oxford',
-        'Prospect',
-        'Seymour',
-        'Southbury',
-        'Wolcott',
-        'Woodbridge'
+        "New Haven",
+        "Waterbury",
+        "Meriden",
+        "Milford",
+        "West Haven",
+        "East Haven",
+        "Wallingford",
+        "Hamden",
+        "Cheshire",
+        "Branford",
+        "Derby",
+        "Guilford",
+        "Madison",
+        "Middlebury",
+        "Naugatuck",
+        "North Branford",
+        "North Haven",
+        "Orange",
+        "Oxford",
+        "Prospect",
+        "Seymour",
+        "Southbury",
+        "Wolcott",
+        "Woodbridge",
     ];
 
     const services = [
-        'Siding',
-        'Siding Installation',
-        'Siding Repair',
-        'Siding Replacement',
-        'Vinyl Siding',
-        'Fiber Cement Siding',
-        'Wood Siding',
-        'Metal Siding',
-        'Siding Contractors',
-        'Residential Siding',
-        'Commercial Siding',
-        'Siding Maintenance',
-        'Siding Inspection',
-        'Custom Siding Solutions',
-        'Siding Renovation',
-        'Siding Painting',
-        'Siding Cleaning',
-        'Energy-Efficient Siding',
-        'Insulated Siding',
-        'Eco-Friendly Siding'
+        "Siding",
+        "Siding Installation",
+        "Siding Repair",
+        "Siding Replacement",
+        "Vinyl Siding",
+        "Fiber Cement Siding",
+        "Wood Siding",
+        "Metal Siding",
+        "Siding Contractors",
+        "Residential Siding",
+        "Commercial Siding",
+        "Siding Maintenance",
+        "Siding Inspection",
+        "Custom Siding Solutions",
+        "Siding Renovation",
+        "Siding Painting",
+        "Siding Cleaning",
+        "Energy-Efficient Siding",
+        "Insulated Siding",
+        "Eco-Friendly Siding",
     ];
 
     return (
@@ -91,7 +91,11 @@ export default function ServiceSiding() {
                         className="w-full h-full object-cover"
                     />
                 </div>
-
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
+                </div>
                 <div className="container relative z-10 py-16 md:py-28 md:px-10">
                     <div
                         className="flex flex-col py-10 text-4xl sm:text-5xl gap-5 sm:gap-28"
@@ -99,22 +103,23 @@ export default function ServiceSiding() {
                     >
                         <span
                             className="w-full text-center md:text-start"
-                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2" }} // Añadir line-height para controlar el espacio entre las líneas
+                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2", color: "#FAA819" }} // Añadir line-height para controlar el espacio entre las líneas y color para cambiar el color de las letras
                         >
                             Update Your Life
                         </span>
                         <span
                             className="w-full text-center md:text-start"
-                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2" }} // Añadir line-height para controlar el espacio entre las líneas
+                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2", color: "#FAA819" }} // Añadir line-height para controlar el espacio entre las líneas y color para cambiar el color de las letras
                         >
                             Transform Your Space
                         </span>
                         <span
                             className="w-full text-center md:text-start"
-                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2" }} // Añadir line-height para controlar el espacio entre las líneas
+                            style={{ textShadow: "var(--textShadow)", lineHeight: "1.2", color: "#FAA819" }} // Añadir line-height para controlar el espacio entre las líneas y color para cambiar el color de las letras
                         >
                             Renew Your Style
                         </span>
+
                     </div>
                 </div>
             </section>
@@ -157,17 +162,21 @@ export default function ServiceSiding() {
                         titleClassName="lg:pb-28"
                     />
                     {/* SEO hidden text */}
-                    <div style={{ display: 'none' }}>
-                        {[...fairfieldCountyCities, ...newHavenCountyCities].map(city => (
-                            services.map(service => (
+                    <div style={{ display: "none" }}>
+                        {[...fairfieldCountyCities, ...newHavenCountyCities].map((city) =>
+                            services.map((service) => (
                                 <div key={`${city}-${service}`}>
                                     {/* Palabras clave con "CT" */}
-                                    <p>{service} in {city}, CT.</p>
+                                    <p>
+                                        {service} in {city}, CT.
+                                    </p>
                                     {/* Palabras clave sin "CT" */}
-                                    <p>{service} in {city}.</p>
+                                    <p>
+                                        {service} in {city}.
+                                    </p>
                                 </div>
                             ))
-                        ))}
+                        )}
                     </div>
                 </div>
                 <div className=" w-full absolute left-0 right-0 -bottom-0 xl:-bottom-20 ">

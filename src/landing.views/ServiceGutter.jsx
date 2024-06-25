@@ -5,7 +5,7 @@ import SectionContact from "../landing.components/SectionContact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import GoogleItems from "../landing.components/GoogleItems";
-
+import BBB from "../landing.components/bbb";
 export default function ServiceGutter() {
     const fairfieldCountyCities = [
         "Bridgeport",
@@ -84,7 +84,7 @@ export default function ServiceGutter() {
 
     return (
         <AnimatedElement>
-            <section style={{ marginTop: '100px' }}>
+            <section style={{ marginTop: "100px" }}>
                 <div className="container">
                     <BannerItem
                         title="Top-Rated Gutter Cleaning"
@@ -110,6 +110,11 @@ export default function ServiceGutter() {
                             ))
                         )}
                     </div>
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
             </section>
             <section className="relative bg-[#0b0c1e]">

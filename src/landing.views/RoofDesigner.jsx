@@ -1,5 +1,6 @@
 import AnimatedElement from "../components/AnimatedElement";
 import brands from "../mooks/brands.json";
+import BBB from "../landing.components/bbb";
 
 export default function RoofDesigner() {
     return (
@@ -11,7 +12,9 @@ export default function RoofDesigner() {
                     "--menu-bar-height": "80px",
                 }}
             >
-                <div className="container">
+                <div className="container" style={{ marginBottom: "40px" }}>
+                    {" "}
+                    {/* marginBottom añade un margen inferior */}
                     <h1 className="text-2xl sm:text-5xl text-center font-title">
                         DESIGN YOUR
                         <span className="text-[--color1-bg]"> HOME</span>
@@ -21,6 +24,12 @@ export default function RoofDesigner() {
                             <Item key={brand.id} href={brand.url} src={brand.src} />
                         ))}
                     </div>
+                </div>
+
+                {/* Botón BBB */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
             </section>
         </AnimatedElement>
@@ -33,13 +42,12 @@ function Item({ href, src }) {
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="relative aspect-square p-10 rounded-lg overflow-hidden shadow-xl transition hover:scale-[1.02]"
+            className="
+                relative aspect-square p-4 sm:p-10 rounded-lg overflow-hidden shadow-xl transition hover:scale-[1.02] 
+                sm:rounded-md md:rounded-lg lg:rounded-xl
+            "
         >
-            <img
-                className="w-full h-full rounded-md overflow-hidden object-contain"
-                src={src}
-                alt=""
-            />
+            <img className="w-full h-full object-contain" src={src} alt="" />
         </a>
     );
 }

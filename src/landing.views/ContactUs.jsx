@@ -3,13 +3,18 @@ import MapaItem from "../landing.components/MapaItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faHandPointer } from "@fortawesome/free-solid-svg-icons";
 import FormConsult from "../landing.components/Formconsult";
-
+import BBB from "../landing.components/bbb";
 export default function ContactUs() {
     return (
         <AnimatedElement>
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 w-full h-full ">
                     <img src="/image/ciudad.jpg" className="w-full h-full object-cover" />
+                </div>
+                {/* boton bbb */}
+                <div>
+                    {/* Otro contenido de la página */}
+                    <BBB />
                 </div>
                 <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-transparent" />
@@ -34,7 +39,8 @@ export default function ContactUs() {
                 <div className="container px-[var(--padding)]">
                     <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-20 -translate-y-16 sm:-translate-y-24">
                         <p className="font-title text-4xl text-center lg:text-end lg:pt-28">
-                        We are your trusted local company for roofing, siding, and gutters in New Haven and Fairfield County.
+                            We are your trusted local company for roofing, siding, and gutters in
+                            New Haven and Fairfield County.
                         </p>
                         <div className="w-full max-w-60 sm:max-w-80">
                             <img

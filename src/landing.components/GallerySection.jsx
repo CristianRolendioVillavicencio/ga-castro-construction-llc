@@ -29,6 +29,9 @@ export default function GallerySection({ images = [] }) {
         }
         setArr(tmp);
     }, [images]);
+
+    const isMobile = window.innerWidth <= 768;
+
     return (
         <>
             <PhotoProvider
@@ -60,22 +63,45 @@ export default function GallerySection({ images = [] }) {
                     );
                 }}
             >
-                <div className="foo grid md:grid-cols-3 gap-5 rounded-md overflow-hidden">
-                    {arr.map((row) => (
-                        <div key={row.img1?.id + "-" + row.img2?.id} className="grid gap-5 w-full ">
-                            {row.img1?.id && <Image src={row.img1?.src} alt={row.img1?.alt} />}
-                            {row.img2?.id && <Image src={row.img2?.src} alt={row.img2?.alt} />}
-                        </div>
-                    ))}
-                </div>
+                {isMobile ? (
+                    // VERSIÓN MÓVIL
+                    // =============
+                    <div className="grid grid-cols-3 gap-2">
+                        {images.map((image, index) => (
+                            <div key={index} className="w-full h-auto">
+                                <Image src={image.src} alt={image.alt} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    // VERSIÓN DE ESCRITORIO
+                    // =====================
+                    <div className="grid md:grid-cols-3 gap-5 rounded-md overflow-hidden">
+                        {arr.map((row) => (
+                            <div key={row.img1?.id + "-" + row.img2?.id} className="grid gap-5 w-full">
+                                {row.img1?.id && (
+                                    <Image src={row.img1?.src} alt={row.img1?.alt} />
+                                )}
+                                {row.img2?.id && (
+                                    <Image src={row.img2?.src} alt={row.img2?.alt} />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </PhotoProvider>
         </>
     );
 }
 
 function Image({ src, alt = "Image of 'GA Castro Constructions LLC' gallery" }) {
-    const elementSize =
-        window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
+    const isMobile = window.innerWidth <= 768;
+    const elementSize = isMobile
+        ? window.innerWidth
+        : window.innerHeight < window.innerWidth
+        ? window.innerHeight
+        : window.innerWidth;
+
     return (
         <PhotoView
             width={elementSize}
@@ -98,6 +124,11 @@ function Image({ src, alt = "Image of 'GA Castro Constructions LLC' gallery" }) 
         </PhotoView>
     );
 }
+
+
+
+
+
 
 // function ImageModal({ src = null, setSrc = null }) {
 //     const _window = useRef();
