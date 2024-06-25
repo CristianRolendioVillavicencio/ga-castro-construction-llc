@@ -1,23 +1,26 @@
 import styled from "styled-components";
 import images from "../mooks/gallery.json";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 export default function CardsCarousel() {
     const carouselList = useRef(null);
 
-    const handleClick = (event, elems) => {
-        var newActive = event.target;
-        update(newActive, elems);
-    };
-
-    const update = function (newActive, elems) {
+    const update = useCallback((newActive, elems) => {
         const newActivePos = newActive.dataset.pos;
         if (!newActivePos) return;
         elems.forEach((item) => {
             var itemPos = item.dataset.pos;
             item.dataset.pos = getPos(itemPos, newActivePos, elems);
         });
-    };
+    }, []);
+
+    const handleClick = useCallback(
+        (event, elems) => {
+            var newActive = event.target;
+            update(newActive, elems);
+        },
+        [update]
+    );
 
     const getPos = function (current, active, elems) {
         const diff = current - active;
@@ -29,25 +32,23 @@ export default function CardsCarousel() {
         return diff;
     };
 
-    const autoPlay = () => {
+    const autoPlay = useCallback(() => {
         const elems = Array.from(document.querySelectorAll(".carousel__item"));
         const active = elems.find((elem) => elem.dataset.pos == 0);
         const next = active.nextElementSibling || carouselList.current.firstElementChild;
-
         update(next, elems);
-    };
+    }, [update]);
 
     useEffect(() => {
         const elems = Array.from(document.querySelectorAll(".carousel__item"));
         carouselList.current.addEventListener("click", (e) => handleClick(e, elems));
-
         const interval = setInterval(autoPlay, 5000);
-
+        const carouselCopy = carouselList.current;
         return () => {
-            carouselList.current.removeEventListener("click", handleClick); // eslint-disable-line
+            carouselCopy.removeEventListener("click", handleClick);
             clearInterval(interval);
-        }; // eslint-disable-line
-    }, []); // eslint-disable-line
+        };
+    }, [autoPlay, handleClick]);
 
     return (
         <Div className="flex items-center w-full aspect-[4/2]">
