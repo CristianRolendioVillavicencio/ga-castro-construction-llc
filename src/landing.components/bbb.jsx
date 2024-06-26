@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const BBB = ({ isMenuOpen }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -31,7 +31,7 @@ const BBB = ({ isMenuOpen }) => {
         position: "fixed",
         bottom: "10px",
         right: "100px",
-        zIndex: 1000,
+        zIndex: 45,
         backgroundColor: "transparent",
     };
 
@@ -39,7 +39,7 @@ const BBB = ({ isMenuOpen }) => {
         position: "fixed",
         bottom: "10px",
         left: "10px",
-        zIndex: 1000,
+        zIndex: 45,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -61,7 +61,7 @@ const BBB = ({ isMenuOpen }) => {
             <a
                 href="https://www.bbb.org/us/ct/stamford/profile/home-improvement/g-a-castro-construction-llc-0111-110084464/#sealclick"
                 target="_blank"
-                rel="nofollow"
+                rel="noreferrer"
                 style={linkStyles}
             >
                 <img
